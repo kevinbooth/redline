@@ -8,3 +8,7 @@ Car Maintenance Application
 ```
 pip install -r requirements.txt
 ```
+* Initialize db.sqlite3 database
+```
+python manage.py migrate
+```
