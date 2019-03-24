@@ -12,3 +12,11 @@ pip install -r requirements.txt
 ```
 python manage.py migrate
 ```
+* Create database superuser
+```
+python manage.py createsuperuser
+```
+* Start server
+```
+python manage.py runserver
+```
