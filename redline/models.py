@@ -11,7 +11,7 @@ class User(models.Model):
     """
     # user name
     user_name = models.CharField(max_length=50, null=False, unique=True)
-    #password
+    # password
     password = models.CharField(max_length=100, null=False)
     # first name
     first_name = models.CharField(max_length=255, null=False)
@@ -22,4 +22,4 @@ class User(models.Model):
         return "username: {}, {} {}".format(self.user_name,
                                             self.first_name,
                                             self.last_name
-                                           )
+                                            )
