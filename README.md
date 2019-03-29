@@ -1,10 +1,18 @@
 # redline-project
-Car Maintenance Application
+#### Car Modification Tracking Application
 
-## Local development steps:
+## Local development steps
 
 * Clone repository locally
-* Reconfigure your virtual environment
+* Create your virtual environment
+```
+python3 -m venv /path/to/new/virtual/environment
+```
+* Start virtual environment
+```
+source /path/to/new/virtual/environment/bin/activate
+```
+* Configure your virtual environment with file included in repo
 ```
 pip install -r requirements.txt
 ```
@@ -16,7 +24,31 @@ python manage.py migrate
 ```
 python manage.py createsuperuser
 ```
+
 * Start server
 ```
 python manage.py runserver
+```
+
+## Project Dependencies
+#### Taken from requirements.txt
+
+* certifi==2019.3.9
+* chardet==3.0.4
+* Django==2.1.7
+* djangorestframework==3.9.1
+* idna==2.8
+* pkg-resources==0.0.0
+* pycodestyle==2.5.0
+* pytz==2018.9
+* requests==2.21.0
+* urllib3==1.24.1
+
+## API Authenication
+#### In order to make requests to API endpoints, you need an auth token
+
+* Make a POST request to `POST '/api/v1/user/auth'` and include username and password key value pairs as JSON in the body of the request
+* Place the auth token you receive in the header of each request
+```
+"Auhorization: Token [auth_token]"
 ```
