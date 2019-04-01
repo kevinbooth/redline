@@ -64,4 +64,22 @@ class UserObjectEndpointTest(BaseViewTest):
     expected = first_user
     serialized = UserSerializer(expected)
     self.assertEqual(response.data, serialized.data)
+
+    def test_put_action(self):
+        """
+        This test ensures that a single user object can be updated
+        from the user/<uuid> endpoint
+        """
+        first_user = User.objects.first()
+        uuid = first_user.uuid
+        self.assertEqual('Toscano', first_user.last_name)
+        put_data = {'first_name': 'Anthony', 'last_name': 'Toscano'}
+        response = self.client.put(
+            reverse("user-object", kwargs={'version': 'v1', 'uuid': uuid}),
+            put_data,
+            format='json'
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        first_user = User.objects.first()
+        self.assertEqual('Toscano', first_user.last_name)
     
