@@ -15,12 +15,19 @@ class BaseViewTest(APITestCase):
     @staticmethod
     def create_user(user_name='',first_name='',last_name=''):
         if first_name != '' and last_name != '' and user_name != '':
-            Pilot.objects.create(user_name=user_name, first_name=first_name, last_name=last_name)
+            User.objects.create(user_name=user_name, first_name=first_name, last_name=last_name)
 
     def setUp(self):
         self.create_user('atoscano199', 'Anthony', 'Toscano')
         self.create_user('kevinbooth', 'Kevin', 'Booth')
         self.create_user('EZombek', 'Ethan', 'Jarzombek')
+        self.create_car('JTMYFREVXD5002907', '2006', 'Subaru', 'Outback', 'Black')
+        self.create_car('3GNGC26U45G236804', '1995', 'GMC', 'Sierra', 'Green')
+        self.create_car('1GNDV13E03D183789', '2018', 'Tesla', 'Model S', 'White')
+
+    def create_car(vin='',year='',make='', model='', color=''):
+            if vin != '' and year != '' and make != '' and model != '' and color != '':
+                Car.objects.create(vin=vin, year=year, make=make, model=model, color=color)
 
 class UserEndpointTest(BaseViewTest):
     def test_get_action(self):
@@ -82,4 +89,3 @@ class UserObjectEndpointTest(BaseViewTest):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         first_user = User.objects.first()
         self.assertEqual('Toscano', first_user.last_name)
-    
