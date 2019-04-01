@@ -21,3 +21,18 @@ class BaseViewTest(APITestCase):
         self.create_user('atoscano199', 'Anthony', 'Toscano')
         self.create_user('kevinbooth', 'Kevin', 'Booth')
         self.create_user('EZombek', 'Ethan', 'Jarzombek')
+
+class UserEndpointTest(BaseViewTest):
+    def test_get_action(self):
+        """
+        This test ensure that all users added in the setUp method
+        exist when we make a GET request to the user/ endpoint
+        """
+    response = self.client.get(
+        reverse("user", kwargs={"version": "v1"})
+    )
+    expected = User.objects.all()
+    serialized = UserSerializer(expected, many=True)
+    self.assertEqual(response.data, serialized.data)
+    self.assertEqual(response.status_code, status.HTTP_200_OK)
+    
