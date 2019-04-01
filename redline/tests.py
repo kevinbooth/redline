@@ -118,3 +118,37 @@ class UserObjectEndpointTest(BaseViewTest):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         first_user = User.objects.first()
         self.assertEqual('Toscano', first_user.last_name)
+
+class CarObjectEndpointTest(BaseViewTest):
+    def test_get_action(self):
+        """
+        This test ensures that a single car object can be retrieved
+        from the car/<uuid> endpoint
+        """
+    first_car = Car.objects.first()
+    uuid = first_car.uuid
+    response = self.client.get(
+        reverse("car-object", kwargs={"version": "v1", 'uuid': uuid})
+    )
+    self.assertEqual(response.status_code, status.HTTP_200_OK)
+    expected = car_user
+    serialized = CarSerializer(expected)
+    self.assertEqual(response.data, serialized.data)
+
+    def test_put_action(self):
+        """
+        This test ensures that a single car object can be updated
+        from the car/<uuid> endpoint
+        """
+        first_car = Car.objects.first()
+        uuid = first_car.uuid
+        self.assertEqual('JTMYFREVXD5002907', first_car.vin)
+        put_data = {'vin': 'JTMYFREVXD5002907', 'year': '2006', 'make': 'Subaru', 'model': 'Outback', 'color': 'Black'}
+        response = self.client.put(
+            reverse("car-object", kwargs={'version': 'v1', 'uuid': uuid}),
+            put_data,
+            format='json'
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
+        first_car = Car.objects.first()
+        self.assertEqual('JTMYFREVXD5002907', first_car.vin)
