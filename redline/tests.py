@@ -48,4 +48,20 @@ class UserEndpointTest(BaseViewTest):
             format='json'
         )
     self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+class UserObjectEndpointTest(BaseViewTest):
+    def test_get_action(self):
+        """
+        This test ensures that a single user object can be retrieved
+        from the user/<uuid> endpoint
+        """
+    first_user = User.objects.first()
+    uuid = first_user.uuid
+    response = self.client.get(
+        reverse("user-object", kwargs={"version": "v1", 'uuid': uuid})
+    )
+    self.assertEqual(response.status_code, status.HTTP_200_OK)
+    expected = first_user
+    serialized = UserSerializer(expected)
+    self.assertEqual(response.data, serialized.data)
     
