@@ -35,4 +35,17 @@ class UserEndpointTest(BaseViewTest):
     serialized = UserSerializer(expected, many=True)
     self.assertEqual(response.data, serialized.data)
     self.assertEqual(response.status_code, status.HTTP_200_OK)
+
+    def test_post_action(self):
+        """
+        This test ensures that a new user can be created via a POST request
+        to the user/ endpoint
+        """
+    post_data = {'user_name': 'atoscano199', 'first_name': 'Anthony', 'last_name': 'Toscano'}
+    response = self.client.post(
+            reverse("user", kwargs={'version': 'v1'}),
+            post_data,
+            format='json'
+        )
+    self.assertEqual(response.status_code, status.HTTP_201_CREATED)
     
