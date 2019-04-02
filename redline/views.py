@@ -26,7 +26,7 @@ class CarView(APIView):
 
 class CarObjectView(APIView):
     """
-    This class handles GET and PUT actions for the Pilot resource.
+    This class handles GET and PUT actions for the Car resource.
     GET - Retrieves a single car
     PUT - Updates a single cars information
     """

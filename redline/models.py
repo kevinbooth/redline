@@ -4,9 +4,9 @@ from django.contrib.auth.models import User
 
 
 class Car(models.Model):
-    user_id = models.ForeignKey(User, unique=True)
+    user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     vin = models.CharField(max_length=17, null=False)
-    year = models.IntegerField(max_length=4, null=False)
+    year = models.IntegerField(null=False)
     make = models.CharField(max_length=255, null=False)
     model = models.CharField(max_length=255, null=False)
     color = models.CharField(max_length=255, null=False)
