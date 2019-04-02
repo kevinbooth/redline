@@ -2,8 +2,8 @@
 from rest_framework import serializers
 from .models import User
 
-class CarSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
         """Maps serializer's files to model fields"""
-        model = Car
-        fields = ("vin", "year", "make", "model", "color")
+        model = User
+        fields = ("user_name", "first_name", "last_name")
