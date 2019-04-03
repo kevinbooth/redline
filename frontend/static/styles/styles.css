@@ -2,31 +2,90 @@
 .nav {
 
 }
-
 .nav .container {
   border-bottom: 1px solid #eee;
 }
-
 .nav__list {
   list-style: none;
 }
-
 .nav__item {
   float: left;
   padding: 10px;
   text-transform: uppercase;
 }
-
 .nav__item--login {
   float: right;
 }
-
 .nav__link {
+  cursor: pointer;
   text-decoration: none;
+}
+
+/* Logo styles */
+.logo {
+  max-width: 300px;
+  padding: 10px 0;
 }
 
 /* Page styles */
 
 .page__title {
   text-transform: uppercase;
+  margin-bottom: 40px;
+}
+.page__subtitle {
+  font-size: 24px;
+  text-transform: uppercase;
+}
+
+/* Car tile styles */
+.car-tile__container {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  display: -webkit-flex; /* Safari */
+  -webkit-flex-wrap: wrap; /* Safari 6.1+ */
+  display: flex;
+  flex-wrap: wrap;
+}
+.car-tile {
+  padding: 20px;
+  width: 100%;
+  -webkit-box-shadow: 0px 0px 20px -15px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0px 0px 20px -15px rgba(0,0,0,0.5);
+  box-shadow: 0px 0px 20px -15px rgba(0,0,0,0.5);
+  margin-bottom: 4%;
+}
+@media only screen and (min-width: 700px) {
+  .car-tile {
+    width: 39%;
+    margin-right: 4%;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .car-tile {
+    width: 27.8%;
+    margin-right: 2%;
+    margin-bottom: 2%;
+  }
+
+  .car-tile:nth-child(3n+3) {
+    margin-right: 0;
+  }
+}
+.car-tile__caption {
+  font-size: 10px;
+  text-transform: uppercase;
+}
+.car-tile__name {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+.car-tile__tasks {
+  color: #00ce8c;
+  font-size: 25px;
+  font-weight: 600;
 }
