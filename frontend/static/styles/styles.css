@@ -1,0 +1,26 @@
+/* Nav styles */
+.nav {
+
+}
+
+.nav .container {
+  border-bottom: 1px solid #eee;
+}
+
+.nav__list {
+  list-style: none;
+}
+
+.nav__item {
+  float: left;
+  padding: 10px;
+  text-transform: uppercase;
+}
+
+.nav__item--login {
+  float: right;
+}
+
+.nav__link {
+  text-decoration: none;
+}
