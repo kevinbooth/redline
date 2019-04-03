@@ -24,3 +24,9 @@
 .nav__link {
   text-decoration: none;
 }
+
+/* Page styles */
+
+.page__title {
+  text-transform: uppercase;
+}
