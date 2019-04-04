@@ -46,6 +46,9 @@ label {
   -webkit-transform: skewY(-8deg);
   transform: skewY(-8deg);
 }
+.page__title--error {
+  font-size: 60px;
+}
 .page__subtitle {
   font-size: 24px;
   text-transform: uppercase;
@@ -55,12 +58,10 @@ label {
 .form {
 
 }
-
 .form__input {
   width: 100%;
   margin-bottom: 20px;
 }
-
 .form__submit {
   margin-bottom: 40px;
 }
@@ -115,4 +116,12 @@ label {
   color: #00ce8c;
   font-size: 25px;
   font-weight: 600;
+}
+
+/* Error styles */
+.error {
+  text-align: center;
+}
+.error__message {
+  font-size: 20px;
 }

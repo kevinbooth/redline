@@ -15,9 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path, include
+from django.conf.urls import handler404, handler500
+from frontend.views import Error404View
 
 urlpatterns = [
     path('', include('frontend.urls')),
     path('admin/', admin.site.urls),
     re_path('api/(?P<version>(v1|v2))/', include('redline.urls')),
 ]
+
+handler404 = Error404View.as_view()
+handler500 = Error404View.as_view()
