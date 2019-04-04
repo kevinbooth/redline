@@ -1,6 +1,12 @@
+/* Global */
+label {
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
 /* Nav styles */
 .nav {
-
+  margin-bottom: 40px;
 }
 .nav .container {
   border-bottom: 1px solid #eee;
@@ -36,6 +42,20 @@
 .page__subtitle {
   font-size: 24px;
   text-transform: uppercase;
+}
+
+/* Login styles */
+.login {
+
+}
+
+.login__input {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.login__submit {
+  margin-bottom: 40px;
 }
 
 /* Car tile styles */
