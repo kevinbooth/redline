@@ -88,7 +88,7 @@ label {
 }
 @media only screen and (min-width: 700px) {
   .car-tile {
-    width: 39%;
+    width: 38.5%;
     margin-right: 4%;
   }
 }
