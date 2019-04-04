@@ -6,10 +6,10 @@ label {
 
 /* Nav styles */
 .nav {
-  margin-bottom: 40px;
+  margin-bottom: 10px;
 }
 .nav .container {
-  border-bottom: 1px solid #eee;
+  border-bottom: 2px solid #eee;
 }
 .nav__list {
   list-style: none;
@@ -36,25 +36,32 @@ label {
 /* Page styles */
 
 .page__title {
-  text-transform: uppercase;
+  background-color: #000;
+  color: #fff;
+  display: inline-block;
   margin-bottom: 40px;
+  padding: 10px;
+  text-transform: uppercase;
+  -ms-transform: skewY(-8deg);
+  -webkit-transform: skewY(-8deg);
+  transform: skewY(-8deg);
 }
 .page__subtitle {
   font-size: 24px;
   text-transform: uppercase;
 }
 
-/* Login styles */
-.login {
+/* Form styles */
+.form {
 
 }
 
-.login__input {
+.form__input {
   width: 100%;
   margin-bottom: 20px;
 }
 
-.login__submit {
+.form__submit {
   margin-bottom: 40px;
 }
 
@@ -65,13 +72,13 @@ label {
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
-
   display: -webkit-flex; /* Safari */
   -webkit-flex-wrap: wrap; /* Safari 6.1+ */
   display: flex;
   flex-wrap: wrap;
 }
 .car-tile {
+  border: 1px solid #eee;
   padding: 20px;
   width: 100%;
   -webkit-box-shadow: 0px 0px 20px -15px rgba(0,0,0,0.5);
@@ -87,7 +94,7 @@ label {
 }
 @media only screen and (min-width: 1200px) {
   .car-tile {
-    width: 27.8%;
+    width: 27%;
     margin-right: 2%;
     margin-bottom: 2%;
   }
