@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container login">
+  <div class="row">
+    <h1 class="page__title">Add a New Car</h1>
+  </div>
+  <div class="row">
+    <div class="five columns">
+      <label for="uname">VIN</label>
+      <input class="login__input" type="text" placeholder="Enter the car's VIN" name="vin" required>
+
+      <label for="uname">Year</label>
+      <input class="login__input" type="text" placeholder="Enter the car's year" name="year" required>
+
+      <label for="uname">Make</label>
+      <input class="login__input" type="text" placeholder="Enter the car's make" name="make" required>
+
+      <label for="uname">Model</label>
+      <input class="login__input" type="text" placeholder="Enter the car's model" name="model" required>
+
+      <label for="psw">Color</label>
+      <input class="login__input" type="text" placeholder="Enter the car's color" name="color" required>
+
+      <button class="login__submit" type="submit">Add New Car</button>
+    </div>
+    <div class="seven columns">
+      <p>Join the free car management platform.</p>
+      <p>Manage all your car projects in one central locations.<p>
+      <p>Track tasks you need to do on your car.<p>
+    </div>
+  </div>
+</div>
+{% endblock %}
