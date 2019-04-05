@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="three columns">
+      <div class="car-sidebar">
+        <div class="car-sidebar__background">
+          <img src="{% static 'images/tiny-car-icon.png' %}"class="car-sidebar__icon" >
+        </div>
+        <div class="car-sidebar__copy">
+          <div class="car-sidebar__info">1987 Toyota AE86</div>
+          <label class="car-sidebar__label">Color:</label>
+          <div class="car-sidebar__info">Gray</div>
+          <label class="car-sidebar__label">VIN:</label>
+          <div class="car-sidebar__info">JTEHT05J542053195</div>
+          <label class="car-sidebar__label">Open Tasks:</label>
+          <div class="car-sidebar__info car-sidebar__info--task">4</div>
+        </div>
+      </div>
+    </div>
+    <div class="nine columns">
+      <h1 class="page__title">Tasks</h1>
+      <table class="task-table">
+        <thead>
+          <tr>
+            <th>Task name</th>
+            <th>Notes</th>
+            <th>Due Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Change oil</td>
+            <td>Make sure to get 0W-20 oil viscosity.</td>
+            <td>05/10/2019</td>
+          </tr>
+          <tr>
+            <td>Mount and balance tires</td>
+            <td>The tires are in the cellar next to the hot water heater</td>
+            <td>05/16/2019</td>
+          </tr>
+          <tr>
+            <td>Install wood grain Nardi Steering wheel</td>
+            <td>Still need to buy airbag sensor bypass module</td>
+            <td>05/22/2019</td>
+          </tr>
+          <tr>
+            <td>Get car inspected</td>
+            <td>Go to Lou's for a lick and stick</td>
+            <td>06/10/2019</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}
