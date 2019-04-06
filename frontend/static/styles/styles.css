@@ -92,6 +92,8 @@ tr:hover {
   flex-wrap: wrap;
 }
 .car-tile {
+  color: #000;
+  display: inline-block;
   border: 1px solid #eee;
   padding: 20px;
   width: 100%;
@@ -99,6 +101,7 @@ tr:hover {
   -moz-box-shadow: 0px 0px 20px -15px rgba(0,0,0,0.5);
   box-shadow: 0px 0px 20px -15px rgba(0,0,0,0.5);
   margin-bottom: 4%;
+  text-decoration: none;
 }
 @media only screen and (min-width: 700px) {
   .car-tile {
