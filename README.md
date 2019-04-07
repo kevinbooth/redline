@@ -54,15 +54,15 @@ python manage.py runserver
 ```
 
 ## Frontend
-#### There are currently four pages on the frontend
-#### The frontend is fully static with no dynamic data as of now
-
+#### There are currently five pages on the frontend. It is fully static with no dynamic data as of now.
+#### Pages:
 * Dashboard - Home screen once logged in
 * New Car - Page to add a new car to your account
 * Login - Form to login
 * Register - Form to register (Might combine this with login page)
 * Car Detail - Shows specific information on a single car
 
+#### Instructions
 * To see the frontend, start server
 ```
 python manage.py runserver
