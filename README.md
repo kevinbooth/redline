@@ -67,4 +67,4 @@ python manage.py runserver
 ```
 python manage.py runserver
 ```
-* Navigate to 127.0.0.1:8000/
+* Navigate to `127.0.0.1:8000/` in a browser
