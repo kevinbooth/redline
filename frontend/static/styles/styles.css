@@ -1,4 +1,7 @@
 /* Global */
+body {
+  background-color: #f3f6f8;
+}
 label {
   font-size: 10px;
   text-transform: uppercase;
@@ -19,10 +22,9 @@ tr:hover {
 
 /* Nav styles */
 .nav {
-  margin-bottom: 10px;
-}
-.nav .container {
+  background-color: #fff;
   border-bottom: 2px solid #eee;
+  margin-bottom: 10px;
 }
 .nav__list {
   list-style: none;
@@ -92,6 +94,7 @@ tr:hover {
   flex-wrap: wrap;
 }
 .car-tile {
+  background-color: #fff;
   color: #000;
   display: inline-block;
   border: 1px solid #eee;
@@ -136,6 +139,7 @@ tr:hover {
 
 /* Car sidebar styles */
 .car-sidebar {
+  background-color: #fff;
   border: 1px solid #eee;
   width: 100%;
   -webkit-box-shadow: 0px 0px 20px -15px rgba(0,0,0,0.5);
@@ -174,9 +178,10 @@ tr:hover {
   margin-bottom: 0;
 }
 
-/* Task table styles */
+/* Table styles */
 .table {
   width: 100%;
+  background-color: #fff;
   border: 1px solid #eee;
   -webkit-box-shadow: 0px 0px 20px -15px rgba(0,0,0,0.5);
   -moz-box-shadow: 0px 0px 20px -15px rgba(0,0,0,0.5);
