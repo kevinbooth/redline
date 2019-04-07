@@ -52,3 +52,19 @@ python manage.py runserver
 ```
 "Auhorization: Token [auth_token]"
 ```
+
+## Frontend
+#### There are currently four pages on the frontend
+#### The frontend is fully static with no dynamic data as of now
+
+* Dashboard - Home screen once logged in
+* New Car - Page to add a new car to your account
+* Login - Form to login
+* Register - Form to register (Might combine this with login page)
+* Car Detail - Shows specific information on a single car
+
+* To see the frontend, start server
+```
+python manage.py runserver
+```
+* Navigate to 127.0.0.1:8000/
