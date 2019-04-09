@@ -1,0 +1,18 @@
+{% load static %}
+
+<nav class="nav">
+  <div class="container">
+    <img class="logo" src="{% static 'images/redline-logo.png' %}">
+    <ul class="nav__list">
+      <li class="nav__item">
+        <a href="/" class="nav__link">Dashboard</a>
+      </li>
+      <li class="nav__item">
+        <a href="/new-car" class="nav__link">New Car</a>
+      </li>
+      <li class="nav__item nav__item--login">
+        <a href="/login" class="nav__link">Login</a>
+      </li>
+    </ul>
+  </div>
+</nav>

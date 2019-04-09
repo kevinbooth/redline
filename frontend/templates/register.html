@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container form">
+  <div class="row">
+    <h1 class="page__title">Register</h1>
+  </div>
+  <div class="row">
+    <div class="five columns">
+      <label for="uname">First name</label>
+      <input class="form__input" type="text" placeholder="Enter First name" name="uname" required>
+
+      <label for="uname">Last Name</label>
+      <input class="form__input" type="text" placeholder="Enter Last name" name="uname" required>
+
+      <label for="uname">Email</label>
+      <input class="form__input" type="text" placeholder="Enter Email" name="uname" required>
+
+      <label for="uname">Username</label>
+      <input class="form__input" type="text" placeholder="Enter Username" name="uname" required>
+
+      <label for="psw">Password</label>
+      <input class="form__input" type="password" placeholder="Enter Password" name="psw" required>
+
+      <label for="psw">Password Again</label>
+      <input class="form__input" type="password" placeholder="Enter Password Again" name="psw" required>
+
+      <button class="form__submit" type="submit">Register</button>
+    </div>
+    <div class="seven columns">
+      <p>Join the free car management platform.</p>
+      <p>Manage all your car projects in one central locations.<p>
+      <p>Track tasks you need to do on your car.<p>
+    </div>
+  </div>
+</div>
+{% endblock %}
