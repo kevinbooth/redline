@@ -16,13 +16,6 @@ class CarView(APIView):
         serializer = CarSerializer(cars, many=True)
         return Response(serializer.data)
 
-    def post(self, request, version, format=None):
-        serializer = CarSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
 
 class CarObjectView(APIView):
     """
@@ -41,6 +34,13 @@ class CarObjectView(APIView):
         car = self.get_object(uuid)
         serializer = CarSerializer(car)
         return Resonse(serializer.data)
+
+    def post(self, request, version, format=None):
+        serializer = CarSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def put(self, request, version, uuid, format=None):
         car = self.get_object(uuid)
