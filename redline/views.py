@@ -29,6 +29,7 @@ class CarObjectView(APIView):
     This class handles GET and PUT actions for the Car resource.
     GET - Retrieves a single car
     PUT - Updates a single cars information
+    DELETE - Removes a car from the list
     """
     def get_object(self, uuid):
         try:
