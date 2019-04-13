@@ -11,4 +11,4 @@ class UserSerializer(serializers.ModelSerializer):
         Maps serializer's files to model fields
         """
         model = User
-        fields = ("user_name", "email", "password", "first_name", "last_name")
+        fields = ("username", "email", "password", "first_name", "last_name")
