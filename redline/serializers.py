@@ -11,4 +11,4 @@ class CarSerializer(serializers.ModelSerializer):
 class CarPostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Car
-        fields = ("id", "vin", "year", "make", "model", "color")
+        fields = ("user_id", "vin", "year", "make", "model", "color")
