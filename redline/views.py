@@ -41,7 +41,7 @@ class CarObjectView(APIView):
     def get(self, request, version, id, format=None):
         car = self.get_object(id)
         serializer = CarSerializer(car)
-        return Resonse(serializer.data)
+        return Response(serializer.data)
 
     def put(self, request, version, id, format=None):
         car = self.get_object(id)
@@ -55,5 +55,5 @@ class CarObjectView(APIView):
         car = self.get_object(id)
         if car:
             car.delete()
-            return Response(car, status=status.HTTP_200_OK)
+            return Response(status.HTTP_200_OK)
         return Response(status.HTTP_404_NOT_FOUND)
