@@ -1,3 +1,6 @@
+"""
+Module to test endpoints in the account app
+"""
 from rest_framework.test import APITestCase, APIClient
 from rest_framework.views import status
 from django.urls import reverse
@@ -16,5 +19,8 @@ class BaseViewTest(APITestCase):
 
 
 class UserEndpointTest(BaseViewTest):
-    def test_post_action(self):
+    """
+    Class to test User specific endpoints
+    """
+    def test_register_user(self):
         self.assertEquals(True, False)
