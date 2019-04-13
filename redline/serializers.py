@@ -5,5 +5,10 @@ from .models import Car
 class CarSerializer(serializers.ModelSerializer):
     class Meta:
         model = Car
-        fields = ("vin", "year", "make", "model", "color")
+        fields = ("id", "vin", "year", "make", "model", "color")
 
+
+class CarPostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Car
+        fields = ("id", "vin", "year", "make", "model", "color")
