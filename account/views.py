@@ -33,6 +33,6 @@ class AccountRegisterView(APIView):
                                      get('first_name'),
                                      last_name=serializer.data.get('last_name')
                                      )
-            return Response(status.HTTP_201_CREATED)
+            return Response(status.HTTP_200_OK)
         else:
             return Response(status.HTTP_400_BAD_REQUEST)

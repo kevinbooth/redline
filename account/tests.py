@@ -23,4 +23,21 @@ class UserEndpointTest(BaseViewTest):
     Class to test User specific endpoints
     """
     def test_register_user(self):
-        self.assertEquals(True, False)
+        """
+        This test ensure that a user is successfully registered
+        when we make a POST request to the user/register endpoint
+        """
+        post_data = {
+            'username': 'bobsmith',
+            'email': 'bsmith@unh.edu',
+            'password': 'abc123',
+            'first_name': 'Bob',
+            'last_name': 'Smith'
+        }
+        # hit the API endpoint
+        response = self.client.post(
+            reverse("register", kwargs={'version': 'v1'}),
+            post_data,
+            format='json'
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
