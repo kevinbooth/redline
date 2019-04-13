@@ -15,4 +15,3 @@ class CarPostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Car
         fields = ("user_id", "vin", "year", "make", "model", "color")
-
