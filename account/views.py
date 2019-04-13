@@ -29,8 +29,10 @@ class AccountRegisterView(APIView):
             User.objects.create_user(username=serializer.data.get('username'),
                                      email=serializer.data.get('email'),
                                      password=serializer.data.get('password'),
-                                     first_name=serializer.data.get('first_name'),
-                                     last_name=serializer.data.get('last_name'))
+                                     first_name=serializer.data.
+                                     get('first_name'),
+                                     last_name=serializer.data.get('last_name')
+                                     )
             return Response(status.HTTP_201_CREATED)
         else:
             return Response(status.HTTP_400_BAD_REQUEST)
