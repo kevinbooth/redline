@@ -8,6 +8,9 @@ from django.contrib.auth.models import User
 
 
 class BaseViewTest(APITestCase):
+    """
+    Base class to setup all required dependencies for all tests
+    """
     client = APIClient()
 
     def setUp(self):
