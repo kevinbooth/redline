@@ -1,4 +1,4 @@
-#import requests
+# import requests
 from django.views.generic.base import TemplateView
 
 APP_TEMPLATE_DIR = 'frontend/'
