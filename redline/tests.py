@@ -26,3 +26,20 @@ class CarEndpointTest(BaseViewTest):
     def test_put_action(self):
 
         self.assertEquals(True, False)
+
+class PartEndpointTest(BaseViewTest):
+    def test_get_action(self):
+
+        self.assertEquals(True, False)
+
+    def test_post_action(self):
+
+        self.assertEquals(True, False)
+
+    def test_put_action(self):
+
+        self.assertEquals(True, False)
+
+    def test_delete_action(self):
+
+        self.assertEquals(True, False)
