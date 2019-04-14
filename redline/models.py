@@ -13,3 +13,13 @@ class Car(models.Model):
 
     def __str__(self):
         return "{}, {}".format(self.make, self.model)
+
+
+class Part(models.Model):
+    task_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    name = models.CharField(max_length=20, null=False)
+    price = models.IntegerField(null=False)
+    quantity = models.IntegerField(null=False)
+
+    def __str__(self):
+        return "{}, {}".format(self.make, self.model)
