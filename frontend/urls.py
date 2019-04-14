@@ -10,7 +10,11 @@ from .views import CarView
 app_name = 'frontend'
 urlpatterns = [
     path('', HomeView.as_view(), name="home"),
-    path('login', auth_views.LoginView.as_view(template_name='frontend/login.html'), name="login"),
+    path(
+            'login',
+            auth_views.LoginView.as_view(template_name='frontend/login.html'),
+            name="login"
+        ),
     path('logout', LogoutView.as_view(), name="logout"),
     path('register', RegisterView.as_view(), name="register"),
     path('new-car', NewCarView.as_view(), name="new-car"),
