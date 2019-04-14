@@ -7,14 +7,33 @@
   </div>
   <div class="row">
     <div class="five columns">
-      <label for="uname">Username</label>
-      <input class="form__input" type="text" placeholder="Enter Username" name="uname" required>
+      {% if form.errors %}
+      <p>Your username and password didn't match. Please try again.</p>
+      {% endif %}
 
-      <label for="psw">Password</label>
-      <input class="form__input" type="password" placeholder="Enter Password" name="psw" required>
+      {% if next %}
+          {% if user.is_authenticated %}
+          <p>Your account doesn't have access to this page. To proceed,
+          please login with an account that has access.</p>
+          {% else %}
+          <p>Please login to see this page.</p>
+          {% endif %}
+      {% endif %}
 
-      <button class="form__submit" type="submit">Login</button>
+      <form method="post" action="login2">
+      {% csrf_token %}
+      <label for="id_username">Username:</label>
+      <input class="form__input" type="text" placeholder="Enter Username" name="username" autofocus required id="id_username">
+      <label for="id_password">Password:</label>
+      <input class="form__input" type="password" placeholder="Enter Password" name="password" required id="id_password">
+
+      <input class="form__submit" type="submit" value="login">
+      <input type="hidden" name="next" value="{{ next }}">
+      </form>
+
       <p>Don't have a login? Register <a href="/register">here</a></p>
+
+
     </div>
     <div class="seven columns">
       <p>Join the free car management platform.</p>
