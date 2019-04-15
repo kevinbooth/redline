@@ -1,6 +1,6 @@
 from .models import Car, Part
 from .serializers import CarSerializer, PartSerializer
-from .serializers import CarPostSerializer
+from .serializers import CarPostSerializer, PartPostSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
