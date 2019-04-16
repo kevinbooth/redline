@@ -62,15 +62,15 @@ class CarObjectView(APIView):
 class TaskView(APIView):
     """
     This class handles the GET and POST actions for the Task resource.
-    GET - Retrieves a list of all the Tasks
+    GET - Retrieves a list of all the Tasks for a specified Car
     POST - Creates a new Task
     """
-    def get(self, request, version, format=None):
-        tasks = task.objects.all()
+    def get(self, request, id, version, format=None):
+        tasks = Task.objects.filter(car_id=id)
         serializer = TaskSerializer(tasks, many=True)
         return Response(serializer.data)
 
-    def post(self, request, version, format=None):
+    def post(self, request, id, version, format=None):
         serializer = TaskPostSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -85,6 +85,7 @@ class TaskObjectView(APIView):
     PUT - Updates a single Task
     DELETE - Removes a Task from the list
     """
+
     def get_object(self, id):
         try:
             return Task.objects.get(id=id)
@@ -93,7 +94,7 @@ class TaskObjectView(APIView):
 
     def get(self, request, version, id, format=None):
         task = self.get_object(id)
-        serializer = TaskSerializer(part)
+        serializer = TaskSerializer(task)
         return Response(serializer.data)
 
     def put(self, request, version, id, format=None):
