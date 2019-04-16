@@ -17,6 +17,7 @@ class Car(models.Model):
 
 
 class Task(models.Model):
+    car_id = models.ForeignKey(Car, on_delete=models.CASCADE)
     name = models.CharField(max_length=255, null=False)
     estimated_hours = models.IntegerField(default=0)
     due_date = models.DateField(null=False, blank=False)
