@@ -1,0 +1,124 @@
+{% extends 'frontend/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="three columns">
+      <div class="car-sidebar">
+        <div class="car-sidebar__background">
+          <img src="{% static 'images/tiny-car-icon.png' %}"class="car-sidebar__icon" >
+        </div>
+        <div class="car-sidebar__copy">
+          <div class="car-sidebar__info">1987 Toyota AE86</div>
+          <label class="car-sidebar__label">Color:</label>
+          <div class="car-sidebar__info">Gray</div>
+          <label class="car-sidebar__label">VIN:</label>
+          <div class="car-sidebar__info">JTEHT05J542053195</div>
+          <label class="car-sidebar__label">Open Tasks:</label>
+          <div class="car-sidebar__info car-sidebar__info--task">4</div>
+        </div>
+      </div>
+    </div>
+    <div class="nine columns">
+      <h1 class="page__title">Tasks</h1>
+      <table id="task-table" class="table">
+        <thead>
+          <tr>
+            <th>Task name</th>
+            <th>Notes</th>
+            <th>Due Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr id="task1">
+            <td>Change oil</td>
+            <td>Make sure to get 0W-20 oil viscosity.</td>
+            <td>05/10/2019</td>
+          </tr>
+          <tr>
+            <td>Mount and balance tires</td>
+            <td>The tires are in the cellar next to the hot water heater</td>
+            <td>05/16/2019</td>
+          </tr>
+          <tr>
+            <td>Install wood grain Nardi Steering wheel</td>
+            <td>Still need to buy airbag sensor bypass module</td>
+            <td>05/22/2019</td>
+          </tr>
+          <tr>
+            <td>Get car inspected</td>
+            <td>Go to Lou's for a lick and stick</td>
+            <td>06/10/2019</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div id="task-modal-1" class="modal closed">
+  <div class="modal__content">
+    <div id="task-modal-1-close" class="modal__close">X</div>
+    <h5 class="page__title">1987 Toyota AE86</h5>
+    <label>Task Name:</label>
+    <div class="task-modal__text">Change oil</div>
+    <label>Notes:</label>
+    <div class="task-modal__text">Make sure to get 0W-20 oil viscosity.</div>
+    <label>Due Date:</label>
+    <div class="task-modal__text">05/10/2019</div>
+    <div class="task-modal__title">Parts</div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Castrol GTX 0W-20 5Qts</td>
+          <td>24.95</td>
+          <td>1</td>
+          <td class="table__controls"><a>Edit</a> / <a>Delete</a></td>
+        </tr>
+        <tr>
+          <td>Bosch oil filter</td>
+          <td>7.99</td>
+          <td>1</td>
+          <td class="table__controls"><a>Edit</a> / <a>Delete</a></td>
+        </tr>
+        <tr>
+          <td>Can of Brakleen</td>
+          <td>2.99</td>
+          <td>2</td>
+          <td class="table__controls"><a>Edit</a> / <a>Delete</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <label for="uname">Complete Task</label>
+    <input class="form__input" type="date" placeholder="Enter date completed" name="complete" required>
+    <button>Complete</button>
+  </div>
+</div>
+<div id="modal__overlay" class="modal__overlay closed"></div>
+
+<script>
+var modal = document.querySelector("#task-modal-1");
+var modalOverlay = document.querySelector("#modal__overlay");
+var closeButton = document.querySelector("#task-modal-1-close");
+var row = document.querySelector("#task1");
+
+closeButton.addEventListener("click", function() {
+  modal.classList.toggle("closed");
+  modalOverlay.classList.toggle("closed");
+});
+
+row.addEventListener("click", function() {
+  modal.classList.toggle("closed");
+  modalOverlay.classList.toggle("closed");
+});
+</script>
+{% endblock %}

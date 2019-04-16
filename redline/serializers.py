@@ -1,12 +1,14 @@
-"""Used to convert data to Python data types then rendered to JSON"""
+"""
+Used to convert data to Python data types then rendered to JSON
+"""
 from rest_framework import serializers
-from .models import User, Task, Car
+from .models import Car, Task
+
 
 class CarSerializer(serializers.ModelSerializer):
     class Meta:
-        """Maps serializer's files to model fields"""
         model = Car
-        fields = ("vin", "year", "make", "model", "color")
+        fields = ("id", "vin", "year", "make", "model", "color")
 
 
 class CarPostSerializer(serializers.ModelSerializer):

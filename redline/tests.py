@@ -4,11 +4,13 @@ from django.urls import reverse
 # from .models import Car, Tasks
 # from .serializers import CarSerializer, TaskSerializer
 
+
 class BaseViewTest(APITestCase):
     client = APIClient()
 
     def setUp(self):
         ()
+
 
 class CarEndpointTest(BaseViewTest):
     def test_get_action(self):
@@ -26,6 +28,7 @@ class CarEndpointTest(BaseViewTest):
     def test_put_action(self):
 
         self.assertEquals(True, False)
+
 
 class TaskEndpointTest(BaseViewTest):
     def test_get_action(self):

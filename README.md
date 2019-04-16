@@ -44,6 +44,22 @@ python manage.py runserver
 * requests==2.21.0
 * urllib3==1.24.1
 
+## API Registration
+#### Create a user account through the API
+
+* Formulate an HTTP request with the following JSON data in the body
+```
+{
+  "username": "testuser",
+  "email": "testuser@unh.edu",
+  "password": "abc123",
+  "first_name": "test",
+  "last_name": "user"
+}
+```
+* Make a POST request to `POST /api/v1/user/register`
+* You can now authenticate yourself with those credentials to receive your auth token
+
 ## API Authenication
 #### In order to make requests to API endpoints, you need an auth token
 
@@ -52,3 +68,19 @@ python manage.py runserver
 ```
 "Auhorization: Token [auth_token]"
 ```
+
+## Frontend
+#### There are currently five pages on the frontend. It is fully static with no dynamic data as of now. However, login and logout functionality is working on the frontend
+#### Pages:
+* Dashboard - Home screen once logged in
+* New Car - Page to add a new car to your account
+* Login - Form to login (This works and isn't static)
+* Register - Form to register (Might combine this with login page)
+* Car Detail - Shows specific information on a single car
+
+#### Instructions
+* To see the frontend, start server
+```
+python manage.py runserver
+```
+* Navigate to `127.0.0.1:8000/` in a browser

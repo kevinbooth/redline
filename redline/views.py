@@ -111,3 +111,4 @@ class TaskObjectView(APIView):
             task.delete()
             return Response(status.HTTP_200_OK)
         return Response(status.HTTP_404_NOT_FOUND)
+
