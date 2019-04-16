@@ -1,6 +1,7 @@
 
 """Stores all of the models that are needed for the API"""
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Task(models.Model):
@@ -11,9 +12,4 @@ class Task(models.Model):
     notes = models.CharField(max_length=500, null=False)
 
     def __str__(self):
-        return "{}, {}".format(self.name,
-         self.estimated_hours,
-         self.due_date,
-         self.due_date,
-         self.completion_date,
-         self.notes)
+        return "{}".format(self.name)

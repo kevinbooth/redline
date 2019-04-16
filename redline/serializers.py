@@ -7,3 +7,8 @@ class CarSerializer(serializers.ModelSerializer):
         """Maps serializer's files to model fields"""
         model = Car
         fields = ("vin", "year", "make", "model", "color")
+
+class TaskSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Task
+        fields = ("name", "estimated_hours", "due_date", "completion_date", "notes")
