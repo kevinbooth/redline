@@ -110,7 +110,7 @@ class TaskObjectView(APIView):
         if task:
             task.delete()
             return Response(status.HTTP_200_OK)
-return Response(status.HTTP_404_NOT_FOUND)
+        return Response(status.HTTP_404_NOT_FOUND)
 
 
 class PartView(APIView):
@@ -163,4 +163,4 @@ class PartObjectView(APIView):
         if part:
             part.delete()
             return Response(status.HTTP_200_OK)
-return Response(status.HTTP_404_NOT_FOUND)
+        return Response(status.HTTP_404_NOT_FOUND)

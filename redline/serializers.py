@@ -2,7 +2,7 @@
 Used to convert data to Python data types then rendered to JSON
 """
 from rest_framework import serializers
-from .models import Car, Task Part
+from .models import Car, Task, Part
 
 
 class CarSerializer(serializers.ModelSerializer):
