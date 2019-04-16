@@ -1,6 +1,6 @@
 """Used to convert data to Python data types then rendered to JSON"""
 from rest_framework import serializers
-from .models import User
+from .models import User, Task
 
 class CarSerializer(serializers.ModelSerializer):
     class Meta:
