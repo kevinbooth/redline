@@ -1,8 +1,9 @@
 from rest_framework.test import APITestCase, APIClient
 from rest_framework.views import status
 from django.urls import reverse
-# from .models import Car
-# from .serializers import CarSerializer
+# from .models import Car, Tasks
+# from .serializers import CarSerializer, TaskSerializer
+
 
 
 class BaseViewTest(APITestCase):
@@ -30,7 +31,7 @@ class CarEndpointTest(BaseViewTest):
         self.assertEquals(True, False)
 
 
-class PartEndpointTest(BaseViewTest):
+class TaskEndpointTest(BaseViewTest):
     def test_get_action(self):
 
         self.assertEquals(True, False)
@@ -39,10 +40,20 @@ class PartEndpointTest(BaseViewTest):
 
         self.assertEquals(True, False)
 
+    def test_delete_action(self):
+
+        self.assertEquals(True, False)
+
+    def test_put_action(self):
+
+        self.assertEquals(True, False)
+
+  
+class PartEndpointTest(BaseViewTest):  
     def test_put_action(self):
 
         self.assertEquals(True, False)
 
     def test_delete_action(self):
-
+ 
         self.assertEquals(True, False)

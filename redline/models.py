@@ -1,4 +1,6 @@
-"""Stores all of the models that are needed for the API"""
+"""
+Stores all of the models that are needed for the API
+"""
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -15,11 +17,23 @@ class Car(models.Model):
         return "{}, {}".format(self.make, self.model)
 
 
+class Task(models.Model):
+    car_id = models.ForeignKey(Car, on_delete=models.CASCADE)
+    name = models.CharField(max_length=255, null=False)
+    estimated_hours = models.IntegerField(default=0)
+    due_date = models.DateField(null=False, blank=False)
+    completion_date = models.DateField(null=True, blank=True)
+    notes = models.CharField(max_length=500, null=False, blank=True)
+
+    def __str__(self):
+        return "{}".format(self.name)
+
+
 class Part(models.Model):
-    task_id = models.ForeignKey(User, on_delete=models.CASCADE)
+    task_id = models.ForeignKey(Task, on_delete=models.CASCADE)
     name = models.CharField(max_length=20, null=False)
     price = models.IntegerField(null=False)
     quantity = models.IntegerField(null=False)
 
     def __str__(self):
-        return "{}, {}".format(self.make, self.model)
+        return "{}, {}".format(self.make, self.model)      
