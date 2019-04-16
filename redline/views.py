@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from .models import Car, Task
 from .serializers import CarSerializer, TaskSerializer
 from .serializers import CarPostSerializer, TaskPostSerializer
@@ -60,15 +59,15 @@ class CarObjectView(APIView):
         return Response(status.HTTP_404_NOT_FOUND)
 
 
-class View(APIView):
+class TaskView(APIView):
     """
     This class handles the GET and POST actions for the Task resource.
     GET - Retrieves a list of all the Tasks
     POST - Creates a new Task
     """
     def get(self, request, version, format=None):
-        parts = task.objects.all()
-        serializer = TaskSerializer(parts, many=True)
+        tasks = task.objects.all()
+        serializer = TaskSerializer(tasks, many=True)
         return Response(serializer.data)
 
     def post(self, request, version, format=None):

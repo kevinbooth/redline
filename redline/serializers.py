@@ -15,7 +15,6 @@ class CarPostSerializer(serializers.ModelSerializer):
         fields = ("user_id", "vin", "year", "make", "model", "color")
 
 
-
 class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = Task

@@ -2,7 +2,7 @@
 Module to define urlpatterns
 """
 from django.urls import path, include
-
+from .views import CarView, CarObjectView, TaskView, TaskObjectView
 
 urlpatterns = [
     path('user/', include('account.urls')),
