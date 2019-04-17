@@ -1,9 +1,9 @@
-import car_endpoint_tests
-import task_endpoint_tests
-import part_endpoint_tests
+from .car_endpoint_tests import BaseViewTest as CarBase, CarEndpointTest
+from .task_endpoint_tests import BaseViewTest as TaskBase, TaskEndpointTest
+from .part_endpoint_tests import BaseViewTest as PartBase, PartEndpointTest
 
 __all__ = [
-    'car_endpoint_tests',
-    'task_endpoint_tests',
-    'part_endpoint_tests'
+    'CarEndpointTest',
+    'TaskEndpointTest',
+    'PartEndpointTest'
 ]
