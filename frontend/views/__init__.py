@@ -5,9 +5,6 @@ from .login_view import LoginView
 from .new_car_view import NewCarView
 from .register_view import RegisterView
 
-APP_TEMPLATE_DIR = 'frontend/'
-API_ROOT_URL = 'http://localhost:8000/api/v1/'
-
 __all__ = [
     'CarView',
     'Error404View',
