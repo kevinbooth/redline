@@ -47,6 +47,9 @@ tr:hover {
     -webkit-transform: rotate(-3deg);
     transform: rotate(-3deg);
 }
+.footer img {
+  max-width: 70px;
+}
 .footer {
   background-color: white;
   padding: 60px 0;
