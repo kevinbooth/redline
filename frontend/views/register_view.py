@@ -2,7 +2,6 @@ import requests
 from django.views.generic.base import TemplateView
 from django.shortcuts import render
 from frontend.forms import RegisterForm
-from rest_framework import status
 
 APP_TEMPLATE_DIR = 'frontend/'
 API_ROOT_URL = 'http://localhost:8000/api/v1/'
