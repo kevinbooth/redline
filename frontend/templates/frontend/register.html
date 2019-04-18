@@ -7,25 +7,29 @@
   </div>
   <div class="row">
     <div class="five columns">
-      <label for="uname">First name</label>
-      <input class="form__input" type="text" placeholder="Enter First name" name="uname" required>
+      <p>{{ msg }}</p>
+      <form method="post" action="register">
+        {% csrf_token %}
+        <label for="first_name">First name</label>
+        <input class="form__input" type="text" placeholder="Enter First name" name="first_name" required>
 
-      <label for="uname">Last Name</label>
-      <input class="form__input" type="text" placeholder="Enter Last name" name="uname" required>
+        <label for="last_name">Last Name</label>
+        <input class="form__input" type="text" placeholder="Enter Last name" name="last_name" required>
 
-      <label for="uname">Email</label>
-      <input class="form__input" type="text" placeholder="Enter Email" name="uname" required>
+        <label for="email">Email</label>
+        <input class="form__input" type="text" placeholder="Enter Email" name="email" required>
 
-      <label for="uname">Username</label>
-      <input class="form__input" type="text" placeholder="Enter Username" name="uname" required>
+        <label for="username">Username</label>
+        <input class="form__input" type="text" placeholder="Enter Username" name="username" required>
 
-      <label for="psw">Password</label>
-      <input class="form__input" type="password" placeholder="Enter Password" name="psw" required>
+        <label for="password">Password</label>
+        <input class="form__input" type="password" placeholder="Enter Password" name="password" required>
 
-      <label for="psw">Password Again</label>
-      <input class="form__input" type="password" placeholder="Enter Password Again" name="psw" required>
+        <label for="confirmed_password">Password Again</label>
+        <input class="form__input" type="password" placeholder="Enter Password Again" name="confirmed_password" required>
 
-      <button class="form__submit" type="submit">Register</button>
+        <button class="form__submit" type="submit">Register</button>
+      </form>
     </div>
     <div class="seven columns">
       <p>Join the free car management platform.</p>
