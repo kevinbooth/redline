@@ -33,27 +33,27 @@ class RegisterView(TemplateView):
             password = form.cleaned_data.get('password')
             confirmed_password = form.cleaned_data.get('confirmed_password')
             if password != confirmed_password:
-                message = { 'msg': 'Your two passwords did not match. ' +
-                    'Please re-register your account.' }
+                message = {'msg': 'Your two passwords did not match. ' +
+                           'Please re-register your account.'}
             else:
                 del form.cleaned_data['confirmed_password']
                 data = form.cleaned_data
                 response = self.post_to_api('user/register/', data)
                 if response != 200:
-                    message = { 'msg': 'Username is already taken. ' +
-                        'Please re-register your account.' }
+                    message = {'msg': 'Username is already taken. ' +
+                               'Please re-register your account.'}
                 else:
-                    data = { 'username': form.cleaned_data.get('username'),
-                        'password': form.cleaned_data.get('password') }
+                    data = {'username': form.cleaned_data.get('username'),
+                            'password': form.cleaned_data.get('password')}
                     # Create an API auth token for the new user
                     response = self.post_to_api('user/auth/', data)
 
-                    message = { 'msg': 'Thank you for registering! ' +
-                        'Please login with your new account.' }
+                    message = {'msg': 'Thank you for registering! ' +
+                               'Please login with your new account.'}
                     self.template_name = APP_TEMPLATE_DIR + "login.html"
         else:
-            message = { 'msg': 'Something went wrong. ' +
-                'Please re-register your account.' }
+            message = {'msg': 'Something went wrong. ' +
+                       'Please re-register your account.'}
             return render(request, self.template_name, message)
         return render(request, self.template_name, message)
 

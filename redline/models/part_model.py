@@ -4,6 +4,7 @@ Module for the Part model definition
 from django.db import models
 from . import Task
 
+
 class Part(models.Model):
     task_id = models.ForeignKey(Task, on_delete=models.CASCADE)
     name = models.CharField(max_length=20, null=False)

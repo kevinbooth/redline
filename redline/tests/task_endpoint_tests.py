@@ -5,7 +5,6 @@ from django.urls import reverse
 # from .serializers import TaskSerializer, TaskPostSerializer
 
 
-
 class BaseViewTest(APITestCase):
     client = APIClient()
 

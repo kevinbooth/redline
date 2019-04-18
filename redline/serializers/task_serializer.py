@@ -8,4 +8,10 @@ from redline.models import Task
 class TaskSerializer(serializers.ModelSerializer):
     class Meta:
         model = Task
-        fields = ("name", "estimated_hours", "due_date", "completion_date", "notes")
+        fields = (
+                  "name",
+                  "estimated_hours",
+                  "due_date",
+                  "completion_date",
+                  "notes"
+                  )

@@ -5,7 +5,6 @@ from django.urls import reverse
 # from .serializers import CarSerializer, CarPostSerializer
 
 
-
 class BaseViewTest(APITestCase):
     client = APIClient()
 
