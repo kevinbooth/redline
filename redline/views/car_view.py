@@ -12,7 +12,7 @@ class CarView(APIView):
     POST - Creates a new car
     """
     def get(self, request, version, format=None):
-        cars = Car.objects.all()
+        cars = Car.objects.filter(id=self.request.user.id)
         serializer = CarSerializer(cars, many=True)
         return Response(serializer.data)
 
