@@ -9,54 +9,18 @@
 
   <div class="row">
     <div class="twelve columns car-tile__container">
-      <a href="car/1" class="car-tile">
-        <div class="car-tile__caption">Car Name:</div>
-        <div class="car-tile__name">1995 Mazda Miata</div>
-        <div class="car-tile__caption">Open Tasks:</div>
-        <div class="car-tile__tasks">21</div>
-      </a>
-      <a href="car/1" class="car-tile">
-        <div class="car-tile__caption">Car Name:</div>
-        <div class="car-tile__name">2012 Ford Fiesta</div>
-        <div class="car-tile__caption">Open Tasks:</div>
-        <div class="car-tile__tasks">14</div>
-      </a>
-      <a href="car/1" class="car-tile">
-        <div class="car-tile__caption">Car Name:</div>
-        <div class="car-tile__name">2001 Volkswagen GTI</div>
-        <div class="car-tile__caption">Open Tasks:</div>
-        <div class="car-tile__tasks">31</div>
-      </a>
-      <a href="car/1" class="car-tile">
-        <div class="car-tile__caption">Car Name:</div>
-        <div class="car-tile__name">1991 Honda CRX</div>
-        <div class="car-tile__caption">Open Tasks:</div>
-        <div class="car-tile__tasks">6</div>
-      </a>
-      <a href="car/1" class="car-tile">
-        <div class="car-tile__caption">Car Name:</div>
-        <div class="car-tile__name">1997 Honda Del Sol</div>
-        <div class="car-tile__caption">Open Tasks:</div>
-        <div class="car-tile__tasks">26</div>
-      </a>
-      <a href="car/1" class="car-tile">
-        <div class="car-tile__caption">Car Name:</div>
-        <div class="car-tile__name">2018 Tesla Model S</div>
-        <div class="car-tile__caption">Open Tasks:</div>
-        <div class="car-tile__tasks">8</div>
-      </a>
-      <a href="car/1" class="car-tile">
-        <div class="car-tile__caption">Car Name:</div>
-        <div class="car-tile__name">1993 Acura NSX</div>
-        <div class="car-tile__caption">Open Tasks:</div>
-        <div class="car-tile__tasks">4</div>
-      </a>
-      <a href="car/1" class="car-tile">
-        <div class="car-tile__caption">Car Name:</div>
-        <div class="car-tile__name">1985 Jeep CJ7</div>
-        <div class="car-tile__caption">Open Tasks:</div>
-        <div class="car-tile__tasks">19</div>
-      </a>
+      {% if car_list %}
+        {% for car in car_list %}
+        <a href="car/{{ car.id }}" class="car-tile">
+          <div class="car-tile__caption">Car Name:</div>
+          <div class="car-tile__name">{{car.make}} {{car.model}}</div>
+          <div class="car-tile__caption">Open Tasks:</div>
+          <div class="car-tile__tasks">0</div>
+        </a>
+        {% endfor %}
+      {% else %}
+        <p>You have no cars! Get out there a buy yourself a trusty steed!</p>
+      {% endif %}
     </div>
   </div>
 </div>
