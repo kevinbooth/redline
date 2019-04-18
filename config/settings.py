@@ -44,6 +44,13 @@ INSTALLED_APPS = [
     'frontend'
 ]
 
+LOGIN_URL = '/login'
+
+LOGIN_EXEMPT_URLS = (
+ r'^api/v1/*',
+ r'/register/',
+)
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -52,6 +59,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'frontend.views.auth_required_middleware_view.AuthRequiredMiddleware'
 ]
 
 ROOT_URLCONF = 'config.urls'
