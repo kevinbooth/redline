@@ -44,11 +44,11 @@ INSTALLED_APPS = [
     'frontend'
 ]
 
-LOGIN_URL = '/login'
+LOGIN_URL = '/login/'
 
 LOGIN_EXEMPT_URLS = (
  r'^api/v1/*',
- r'^register',
+ r'^register/?',
 )
 
 MIDDLEWARE = [
@@ -146,3 +146,5 @@ REST_FRAMEWORK = {
 
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/login'
+
+APPEND_SLASH = True
