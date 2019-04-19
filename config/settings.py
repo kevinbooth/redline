@@ -48,7 +48,7 @@ LOGIN_URL = '/login'
 
 LOGIN_EXEMPT_URLS = (
  r'^api/v1/*',
- r'/register/',
+ r'^register',
 )
 
 MIDDLEWARE = [
