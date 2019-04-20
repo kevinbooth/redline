@@ -100,7 +100,7 @@
 var tasks = document.getElementsByClassName('task');
 var closeButtons = document.getElementsByClassName('modal-close');
 var modalOverlay = document.querySelector("#modal__overlay");
-console.log(tasks.length);
+
 for (var i = 0; i < tasks.length; i++) {
   tasks[i].addEventListener("click", function() {
     modal = document.querySelector('#task-modal-' + this.id);
