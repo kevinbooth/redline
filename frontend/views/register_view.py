@@ -28,6 +28,7 @@ class RegisterView(TemplateView):
         """
         message = {}
         form = RegisterForm(self.request.POST)
+        print(form.cleaned_data)
         if form.is_valid():
             password = form.cleaned_data.get('password')
             confirmed_password = form.cleaned_data.get('confirmed_password')
