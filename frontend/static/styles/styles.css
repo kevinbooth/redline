@@ -286,6 +286,10 @@ tr:hover {
   font-size: 20px;
   margin-bottom: 20px;
 }
+.task__button {
+  float: right;
+  margin-top: 20px;
+}
 
 /* Error styles */
 .error {

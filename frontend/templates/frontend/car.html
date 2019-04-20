@@ -22,6 +22,9 @@
     </div>
     <div class="nine columns">
       <h1 class="page__title">Tasks</h1>
+      <div class="task__button">
+        <a href="/car/{{car.id}}/task" class="button">Add New Task</a>
+      </div>
       <table id="task-table" class="table">
         <thead>
           <tr>
@@ -47,7 +50,7 @@
 {% for task in task_list %}
 <div id="task-modal-{{task.id}}" class="modal closed">
   <div class="modal__content">
-    <div class="modal__close modal-close">X</div>
+    <div class="modal__close">X</div>
     <h5 class="page__title">{{car.year}} {{car.make}} {{car.model}}</h5>
     <label>Task Name:</label>
     <div class="task-modal__text">{{task.name}}</div>
@@ -88,7 +91,7 @@
         </tr>
       </tbody>
     </table>
-    <label for="uname">Complete Task</label>
+    <label for="complete">Complete Task</label>
     <input class="form__input" type="date" placeholder="Enter date completed" name="complete" required>
     <button>Complete</button>
   </div>
@@ -98,7 +101,7 @@
 
 <script>
 var tasks = document.getElementsByClassName('task');
-var closeButtons = document.getElementsByClassName('modal-close');
+var closeButtons = document.getElementsByClassName('modal__close');
 var modalOverlay = document.querySelector("#modal__overlay");
 
 for (var i = 0; i < tasks.length; i++) {
