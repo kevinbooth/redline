@@ -10,13 +10,13 @@
           <img src="{% static 'images/tiny-car-icon.png' %}"class="car-sidebar__icon" >
         </div>
         <div class="car-sidebar__copy">
-          <div class="car-sidebar__info">1987 Toyota AE86</div>
+          <div class="car-sidebar__info">{{car.year}} {{car.make}} {{car.model}}</div>
           <label class="car-sidebar__label">Color:</label>
-          <div class="car-sidebar__info">Gray</div>
+          <div class="car-sidebar__info">{{car.color}}</div>
           <label class="car-sidebar__label">VIN:</label>
-          <div class="car-sidebar__info">JTEHT05J542053195</div>
+          <div class="car-sidebar__info">{{car.vin}}</div>
           <label class="car-sidebar__label">Open Tasks:</label>
-          <div class="car-sidebar__info car-sidebar__info--task">4</div>
+          <div class="car-sidebar__info car-sidebar__info--task">{{task_list|length}}</div>
         </div>
       </div>
     </div>
@@ -31,42 +31,32 @@
           </tr>
         </thead>
         <tbody>
-          <tr id="task1">
-            <td>Change oil</td>
-            <td>Make sure to get 0W-20 oil viscosity.</td>
-            <td>05/10/2019</td>
+          {% for task in task_list %}
+          <tr id="{{task.id}}" class="task">
+            <td>{{task.name}}</td>
+            <td>{{task.notes}}</td>
+            <td>{{task.due_date}}</td>
           </tr>
-          <tr>
-            <td>Mount and balance tires</td>
-            <td>The tires are in the cellar next to the hot water heater</td>
-            <td>05/16/2019</td>
-          </tr>
-          <tr>
-            <td>Install wood grain Nardi Steering wheel</td>
-            <td>Still need to buy airbag sensor bypass module</td>
-            <td>05/22/2019</td>
-          </tr>
-          <tr>
-            <td>Get car inspected</td>
-            <td>Go to Lou's for a lick and stick</td>
-            <td>06/10/2019</td>
-          </tr>
+          {% endfor %}
         </tbody>
       </table>
     </div>
   </div>
 </div>
 
-<div id="task-modal-1" class="modal closed">
+{% for task in task_list %}
+<div id="task-modal-{{task.id}}" class="modal closed">
   <div class="modal__content">
-    <div id="task-modal-1-close" class="modal__close">X</div>
-    <h5 class="page__title">1987 Toyota AE86</h5>
+    <div class="modal__close modal-close">X</div>
+    <h5 class="page__title">{{car.year}} {{car.make}} {{car.model}}</h5>
     <label>Task Name:</label>
-    <div class="task-modal__text">Change oil</div>
+    <div class="task-modal__text">{{task.name}}</div>
     <label>Notes:</label>
-    <div class="task-modal__text">Make sure to get 0W-20 oil viscosity.</div>
+    <div class="task-modal__text">{{task.notes}}</div>
+    <label>Estimated Hours:</label>
+    <div class="task-modal__text">{{task.estimated_hours}}</div>
     <label>Due Date:</label>
-    <div class="task-modal__text">05/10/2019</div>
+    <div class="task-modal__text">{{task.due_date}}</div>
     <div class="task-modal__title">Parts</div>
     <table class="table">
       <thead>
@@ -103,22 +93,26 @@
     <button>Complete</button>
   </div>
 </div>
+{% endfor %}
 <div id="modal__overlay" class="modal__overlay closed"></div>
 
 <script>
-var modal = document.querySelector("#task-modal-1");
+var tasks = document.getElementsByClassName('task');
+var closeButtons = document.getElementsByClassName('modal-close');
 var modalOverlay = document.querySelector("#modal__overlay");
-var closeButton = document.querySelector("#task-modal-1-close");
-var row = document.querySelector("#task1");
+console.log(tasks.length);
+for (var i = 0; i < tasks.length; i++) {
+  tasks[i].addEventListener("click", function() {
+    modal = document.querySelector('#task-modal-' + this.id);
+    modal.classList.toggle("closed");
+    modalOverlay.classList.toggle("closed");
+  });
 
-closeButton.addEventListener("click", function() {
-  modal.classList.toggle("closed");
-  modalOverlay.classList.toggle("closed");
-});
-
-row.addEventListener("click", function() {
-  modal.classList.toggle("closed");
-  modalOverlay.classList.toggle("closed");
-});
+  closeButtons[i].addEventListener("click", function() {
+    modal = this.parentNode.parentNode;
+    modal.classList.toggle("closed");
+    modalOverlay.classList.toggle("closed");
+  });
+}
 </script>
 {% endblock %}
