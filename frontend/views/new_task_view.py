@@ -39,7 +39,6 @@ class NewTaskView(TemplateView):
                              )
             return render(request, self.template_name, context)
         else:
-            print('fail')
             return render(request, self.template_name, context)
 
     def get_from_api(self, url, auth):
@@ -70,6 +69,5 @@ class NewTaskView(TemplateView):
                                           },
                                  json=data
                                  )
-        print(response.json())
         data = response.json()
         return data
