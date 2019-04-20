@@ -1,11 +1,9 @@
 from django.urls import path
 from django.contrib.auth import views as auth_views
 from django.contrib.auth.views import LogoutView
-from .views import HomeView
-from .views import LoginView
-from .views import RegisterView
-from .views import NewCarView
-from .views import CarView
+from .views import HomeView, CarView
+from .views import LoginView, RegisterView
+from .views import NewCarView, NewTaskView
 
 app_name = 'frontend'
 
@@ -20,4 +18,5 @@ urlpatterns = [
     path('register/', RegisterView.as_view(), name="register"),
     path('new-car/', NewCarView.as_view(), name="new-car"),
     path('car/<id>/', CarView.as_view(), name="car"),
+    path('car/<id>/new-task/', NewTaskView.as_view(), name="car"),
 ]
