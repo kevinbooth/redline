@@ -22,6 +22,7 @@
     </div>
     <div class="five columns">
       <h1 class="page__title">Add a New Task</h1>
+      <p>{{message}}</p>
       <form method="post" action="/car/{{car.id}}/new-task/">
         {% csrf_token %}
         <label for="name">Name*</label>

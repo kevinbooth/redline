@@ -37,8 +37,10 @@ class NewTaskView(TemplateView):
                              self.request.user.auth_token,
                              form.cleaned_data
                              )
+            context['message'] = 'Thank you! Your task has been saved.'                
             return render(request, self.template_name, context)
         else:
+            context['message'] = 'There was an error with your request.'
             return render(request, self.template_name, context)
 
     def get_from_api(self, url, auth):
