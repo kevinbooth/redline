@@ -19,7 +19,7 @@ class CarView(TemplateView):
                                 self.request.user.auth_token
                                 )
         task_list = self.get_from_api(
-                                      'car/' + id + '/tasks',
+                                      'car/' + id + '/tasks/',
                                       self.request.user.auth_token
                                       )
         context['car'] = car
