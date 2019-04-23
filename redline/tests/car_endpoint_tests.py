@@ -55,7 +55,7 @@ class CarEndpointTest(BaseViewTest):
         This test ensures that all the cars for this account
         are returned without any issues.
         """
-        # hit the API endpoint
+
         response = self.client.get(
             reverse("cars", kwargs={'version': 'v1'}),
             format='json'
@@ -67,7 +67,7 @@ class CarEndpointTest(BaseViewTest):
         This test ensure that a car is successfully added
         when we make a POST request to the cars/ endpoint
         """
-        # hit the API endpoint
+
         response = self.client.post(
             reverse("cars", kwargs={'version': 'v1'}),
             self.car_post_data,
@@ -87,5 +87,15 @@ class CarEndpointTest(BaseViewTest):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_put_action(self):
+        """
+        This test ensure that a car is successfully added
+        when we make a POST request to the cars/ endpoint
+        """
+        car_id = Car.objects.get(vin='abc1234567890').id
 
-        self.assertEquals(True, False)
+        response = self.client.put(
+            reverse("car", kwargs={'version': 'v1', 'id': car_id}),
+            self.car_post_data,
+            format='json'
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
