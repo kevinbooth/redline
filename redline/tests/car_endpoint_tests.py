@@ -30,8 +30,20 @@ class BaseViewTest(APITestCase):
 
 class CarEndpointTest(BaseViewTest):
     def test_get_action(self):
+        """
+        This test ensures that all the cars for this account
+        are returned without any issues.
+        """
 
-        self.assertEquals(True, False)
+        token = Token.objects.get(user__username='jsmith')
+        self.client.credentials(HTTP_AUTHORIZATION='Token ' + token.key)
+
+        # hit the API endpoint
+        response = self.client.get(
+            reverse("cars", kwargs={'version': 'v1'}),
+            format='json'
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_post_single_car(self):
         """
