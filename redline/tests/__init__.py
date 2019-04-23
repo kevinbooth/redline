@@ -1,4 +1,4 @@
-from .car_endpoint_tests import BaseViewTest as CarBase, CarEndpointTest
+from .car_endpoint_tests import CarEndpointTest
 from .task_endpoint_tests import BaseViewTest as TaskBase, TaskEndpointTest
 from .part_endpoint_tests import BaseViewTest as PartBase, PartEndpointTest
 
