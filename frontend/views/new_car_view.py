@@ -1,5 +1,5 @@
 from frontend.constants import APP_TEMPLATE_DIR, API_ROOT_URL
-# import requests
+from frontend.views.api_helper import APIHelper
 from django.views.generic.base import TemplateView
 
 
@@ -14,11 +14,3 @@ class NewCarView(TemplateView):
         """
         context = super().get_context_data(**kwargs)
         return context
-
-    def get_from_api(self, url):
-        """
-        Sends a get requests to API_ROOT_URL/url
-        @param url : string
-        @return json api response
-        """
-        return

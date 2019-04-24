@@ -1,5 +1,5 @@
 from frontend.constants import APP_TEMPLATE_DIR, API_ROOT_URL
-import requests
+from frontend.views.api_helper import APIHelper
 from django.views.generic.base import TemplateView
 from django.shortcuts import render
 from frontend.forms import RegisterForm
@@ -36,7 +36,7 @@ class RegisterView(TemplateView):
             else:
                 del form.cleaned_data['confirmed_password']
                 data = form.cleaned_data
-                response = self.post_to_api('user/register/', data)
+                response = APIHelper.public_post_to_api('user/register/', data)
                 if response != 200:
                     message = {'msg': 'Username is already taken. ' +
                                'Please re-register your account.'}
@@ -44,7 +44,7 @@ class RegisterView(TemplateView):
                     data = {'username': form.cleaned_data.get('username'),
                             'password': form.cleaned_data.get('password')}
                     # Create an API auth token for the new user
-                    response = self.post_to_api('user/auth/', data)
+                    response = APIHelper.public_post_to_api('user/auth/', data)
 
                     message = {'msg': 'Thank you for registering! ' +
                                'Please login with your new account.'}
@@ -54,14 +54,3 @@ class RegisterView(TemplateView):
                        'Please re-register your account.'}
             return render(request, self.template_name, message)
         return render(request, self.template_name, message)
-
-    def post_to_api(self, url, data=''):
-        """
-        Sends a get requests to API_ROOT_URL/url
-        @param url : string
-        @param data : json (optional)
-        @return json api response
-        """
-        response = requests.post(API_ROOT_URL + url, json=data)
-        data = response.json()
-        return data

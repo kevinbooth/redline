@@ -1,5 +1,5 @@
 from frontend.constants import APP_TEMPLATE_DIR, API_ROOT_URL
-import requests
+from frontend.views.api_helper import APIHelper
 from django.views.generic.base import TemplateView
 from django.shortcuts import render
 from frontend.forms import NewTaskForm
@@ -15,9 +15,8 @@ class NewTaskView(TemplateView):
         context dictionary that is passed to the template
         """
         context = super().get_context_data(**kwargs)
-        car = self.get_from_api('car/' + id,
-                                self.request.user.auth_token
-                                )
+        car = APIHelper.get_from_api('car/' + id,
+                                     self.request.user.auth_token)
         context['car'] = car
 
         return context
@@ -30,44 +29,11 @@ class NewTaskView(TemplateView):
             form.cleaned_data['car_id'] = id
             if form.cleaned_data.get('completion_date') == '':
                 form.cleaned_data['completion_date'] = None
-            self.post_to_api(
-                             'car/' + id + '/tasks/',
-                             self.request.user.auth_token,
-                             form.cleaned_data
-                             )
+            APIHelper.post_to_api('car/' + id + '/tasks/',
+                                  self.request.user.auth_token,
+                                  form.cleaned_data)
             context['message'] = 'Thank you! Your task has been saved.'
             return render(request, self.template_name, context)
         else:
             context['message'] = 'There was an error with your request.'
             return render(request, self.template_name, context)
-
-    def get_from_api(self, url, auth):
-        """
-        Sends a get requests to API_ROOT_URL/url
-        @param url : string
-        @return json api response
-        """
-        response = requests.get(
-                                API_ROOT_URL + url,
-                                headers={'Authorization': 'Token ' + str(auth)}
-                                )
-        data = response.json()
-        return data
-
-    def post_to_api(self, url, auth, data=''):
-        """
-        Sends a get requests to API_ROOT_URL/url
-        @param url : string
-        @param data : json (optional)
-        @return json api response
-        """
-        response = requests.post(
-                                 API_ROOT_URL + url,
-                                 headers={
-                                          'Authorization': 'Token ' +
-                                          str(auth)
-                                          },
-                                 json=data
-                                 )
-        data = response.json()
-        return data

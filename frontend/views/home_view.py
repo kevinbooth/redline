@@ -1,4 +1,5 @@
 from frontend.constants import APP_TEMPLATE_DIR, API_ROOT_URL
+from frontend.views.api_helper import APIHelper
 import requests
 from django.views.generic.base import TemplateView
 
@@ -13,20 +14,8 @@ class HomeView(TemplateView):
         context dictionary that is passed to the template
         """
         context = super().get_context_data(**kwargs)
-        car_list = self.get_from_api('cars/', self.request.user.auth_token)
+        car_list = APIHelper.get_from_api('cars/',
+                                          self.request.user.auth_token)
         context['car_list'] = car_list
 
         return context
-
-    def get_from_api(self, url, auth):
-        """
-        Sends a get requests to API_ROOT_URL/url
-        @param url : string
-        @return json api response
-        """
-        response = requests.get(
-                                API_ROOT_URL + url,
-                                headers={'Authorization': 'Token ' + str(auth)}
-                                )
-        data = response.json()
-        return data
