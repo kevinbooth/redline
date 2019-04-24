@@ -21,13 +21,17 @@ class NewPartView(TemplateView):
         task = self.get_from_api('task/' + task_id,
                                 self.request.user.auth_token
                                 )
+        part_list = self.get_from_api(
+                                      'parts/',
+                                      self.request.user.auth_token
+                                      )
         context['car'] = car
         context['task'] = task
+        context['part_list'] = part_list
 
         return context
 
     def post(self, request, car_id, task_id, **kwargs):
-        context = self.get_context_data(car_id, task_id)
         form = NewPartForm(self.request.POST)
 
         if form.is_valid():
@@ -37,6 +41,7 @@ class NewPartView(TemplateView):
                              self.request.user.auth_token,
                              form.cleaned_data
                              )
+            context = self.get_context_data(car_id, task_id)
             context['message'] = 'Thank you! Your part has been saved.'
             return render(request, self.template_name, context)
         else:

@@ -15,8 +15,6 @@
           <div class="car-sidebar__info">{{car.color}}</div>
           <label class="car-sidebar__label">VIN:</label>
           <div class="car-sidebar__info">{{car.vin}}</div>
-          <label class="car-sidebar__label">Open Tasks:</label>
-          <div class="car-sidebar__info car-sidebar__info--task">N/A</div>
         </div>
       </div>
     </div>
@@ -37,6 +35,33 @@
 
         <button class="button" type="submit">Save</button>
       </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="twelve columns">
+      <h4 class="page__subtitle">Parts</h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for part in part_list %}
+              {% if task.id == part.task_id %}
+              <tr>
+                <td>{{part.name}}</td>
+                <td>{{part.price}}</td>
+                <td>{{part.quantity}}</td>
+                <td class="table__controls"><a>Edit</a> / <a>Delete</a></td>
+              </tr>
+              {% endif %}
+            {% endfor %}
+        </tbody>
+      </table>
     </div>
   </div>
 </div>
