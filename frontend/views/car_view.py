@@ -1,6 +1,8 @@
 from frontend.constants import APP_TEMPLATE_DIR, API_ROOT_URL
-import requests
+from frontend.views.api_helper import APIHelper
 from django.views.generic.base import TemplateView
+from django.shortcuts import render
+from frontend.forms import CompleteTaskForm
 
 
 class CarView(TemplateView):
@@ -13,33 +15,34 @@ class CarView(TemplateView):
         context dictionary that is passed to the template
         """
         context = super().get_context_data(**kwargs)
-        car = self.get_from_api('car/' + id,
-                                self.request.user.auth_token
-                                )
-        task_list = self.get_from_api(
-                                      'car/' + id + '/tasks/',
-                                      self.request.user.auth_token
-                                      )
-        part_list = self.get_from_api(
-                                      'parts/',
-                                      self.request.user.auth_token
-                                      )
+        car = APIHelper.get_from_api('car/' + id,
+                                     self.request.user.auth_token)
+        task_list = APIHelper.get_from_api('car/' + id + '/tasks/',
+                                           self.request.user.auth_token)
+        part_list = APIHelper.get_from_api('parts/',
+                                           self.request.user.auth_token)
+
         context['car'] = car
         context['task_list'] = task_list
         context['part_list'] = part_list
 
         return context
 
-    def get_from_api(self, url, auth):
+    def post(self, request, id, **kwargs):
         """
-        Sends a get requests to API_ROOT_URL/url
-        @param url : string
-        @return json api response
+        Used to complete a task
         """
-        response = requests.get(
-                                API_ROOT_URL + url,
-                                headers={'Authorization': 'Token ' + str(auth)}
-                                )
-        print(response)
-        data = response.json()
-        return data
+        form = CompleteTaskForm(self.request.POST)
+        if form.is_valid():
+            task_id = request.GET.get('task_id')
+            task = APIHelper.get_from_api('task/' + task_id,
+                                          self.request.user.auth_token)
+            task['completion_date'] = form.cleaned_data['completion_date']
+            APIHelper.put_to_api('task/' + task_id,
+                                 self.request.user.auth_token,
+                                 task)
+            context = self.get_context_data(id)
+            context['message'] = 'Thank you, your task has been completed.'
+            return render(request, self.template_name, context)
+        else:
+            return render(request, self.template_name)
