@@ -16,12 +16,12 @@
           <label class="car-sidebar__label">VIN:</label>
           <div class="car-sidebar__info">{{car.vin}}</div>
           <label class="car-sidebar__label">Open Tasks:</label>
-          <div class="car-sidebar__info car-sidebar__info--task">{{task_list|length}}</div>
+          <div class="car-sidebar__info car-sidebar__info--task">{{car.open_task_count}}</div>
         </div>
       </div>
     </div>
     <div class="nine columns">
-      <h1 class="page__title">Tasks</h1>
+      <h1 class="page__title">Open Tasks</h1>
       <div class="task__button">
         <a href="/car/{{car.id}}/new-task/" class="button">Add New Task</a>
       </div>
@@ -35,11 +35,35 @@
         </thead>
         <tbody>
           {% for task in task_list %}
-          <tr id="{{task.id}}" class="task">
-            <td>{{task.name}}</td>
-            <td>{{task.notes}}</td>
-            <td>{{task.due_date}}</td>
+            {% if task.completion_date == None %}
+            <tr id="{{task.id}}" class="task">
+              <td>{{task.name}}</td>
+              <td>{{task.notes}}</td>
+              <td>{{task.due_date}}</td>
+            </tr>
+            {% endif %}
+          {% endfor %}
+        </tbody>
+      </table>
+
+      <h1 class="page__title">Closed Tasks</h1>
+      <table id="task-table" class="table">
+        <thead>
+          <tr>
+            <th>Task name</th>
+            <th>Notes</th>
+            <th>Completion Date</th>
           </tr>
+        </thead>
+        <tbody>
+          {% for task in task_list %}
+            {% if task.completion_date != None %}
+            <tr id="{{task.id}}" class="task">
+              <td>{{task.name}}</td>
+              <td>{{task.notes}}</td>
+              <td>{{task.completion_date}}</td>
+            </tr>
+            {% endif %}
           {% endfor %}
         </tbody>
       </table>
@@ -60,6 +84,10 @@
     <div class="task-modal__text">{{task.estimated_hours}}</div>
     <label>Due Date:</label>
     <div class="task-modal__text">{{task.due_date}}</div>
+    {% if task.completion_date != None %}
+    <label>Completion Date:</label>
+    <div class="task-modal__text">{{task.completion_date}}</div>
+    {% endif %}
     <div class="task-modal__title">Parts</div>
     <a href="/car/{{car.id}}/task/{{task.id}}/new-part" class="button">Add New Part</a>
     <table class="table">
@@ -84,9 +112,14 @@
           {% endfor %}
       </tbody>
     </table>
-    <label for="complete">Complete Task</label>
-    <input class="form__input" type="date" placeholder="Enter date completed" name="complete" required>
-    <button>Complete</button>
+    {% if task.completion_date == None %}
+    <form method="post" action="/car/{{car.id}}/?task_id={{task.id}}">
+      {% csrf_token %}
+      <label for="completion_date">Complete Task</label>
+      <input class="form__input" type="date" placeholder="Enter date completed" name="completion_date" required>
+      <button type="submit">Complete</button>
+    </form>
+    {% endif %}
   </div>
 </div>
 {% endfor %}
