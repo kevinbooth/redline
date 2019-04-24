@@ -1,10 +1,8 @@
+from frontend.constants import APP_TEMPLATE_DIR, API_ROOT_URL
 import requests
 from django.views.generic.base import TemplateView
 from django.shortcuts import render
 from frontend.forms import RegisterForm
-
-APP_TEMPLATE_DIR = 'frontend/'
-API_ROOT_URL = 'http://localhost:8000/api/v1/'
 
 
 class RegisterView(TemplateView):
@@ -28,7 +26,7 @@ class RegisterView(TemplateView):
         """
         message = {}
         form = RegisterForm(self.request.POST)
-        
+
         if form.is_valid():
             password = form.cleaned_data.get('password')
             confirmed_password = form.cleaned_data.get('confirmed_password')

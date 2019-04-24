@@ -1,10 +1,8 @@
+from frontend.constants import APP_TEMPLATE_DIR, API_ROOT_URL
 import requests
 from django.views.generic.base import TemplateView
 from django.shortcuts import render
 from frontend.forms import NewTaskForm
-
-APP_TEMPLATE_DIR = 'frontend/'
-API_ROOT_URL = 'http://localhost:8000/api/v1/'
 
 
 class NewTaskView(TemplateView):
@@ -37,7 +35,7 @@ class NewTaskView(TemplateView):
                              self.request.user.auth_token,
                              form.cleaned_data
                              )
-            context['message'] = 'Thank you! Your task has been saved.'                
+            context['message'] = 'Thank you! Your task has been saved.'
             return render(request, self.template_name, context)
         else:
             context['message'] = 'There was an error with your request.'

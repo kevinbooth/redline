@@ -1,8 +1,6 @@
+from frontend.constants import APP_TEMPLATE_DIR, API_ROOT_URL
 import requests
 from django.views.generic.base import TemplateView
-
-APP_TEMPLATE_DIR = 'frontend/'
-API_ROOT_URL = 'http://localhost:8000/api/v1/'
 
 
 class CarView(TemplateView):
@@ -22,8 +20,13 @@ class CarView(TemplateView):
                                       'car/' + id + '/tasks/',
                                       self.request.user.auth_token
                                       )
+        part_list = self.get_from_api(
+                                      'parts/',
+                                      self.request.user.auth_token
+                                      )
         context['car'] = car
         context['task_list'] = task_list
+        context['part_list'] = part_list
 
         return context
 
@@ -37,5 +40,6 @@ class CarView(TemplateView):
                                 API_ROOT_URL + url,
                                 headers={'Authorization': 'Token ' + str(auth)}
                                 )
+        print(response)
         data = response.json()
         return data
