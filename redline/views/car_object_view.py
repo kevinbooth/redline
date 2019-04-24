@@ -1,4 +1,4 @@
-from redline.models import Car
+from redline.models import Car, Task
 from redline.serializers import CarSerializer, CarPostSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -20,8 +20,11 @@ class CarObjectView(APIView):
 
     def get(self, request, version, id, format=None):
         car = self.get_object(id)
+        open_task_count = Task.objects.filter(car_id=id, completion_date=None).count()
         serializer = CarSerializer(car)
-        return Response(serializer.data)
+        data  = dict(serializer.data)
+        data['open_task_count'] = open_task_count
+        return Response(data)
 
     def put(self, request, version, id, format=None):
         car = self.get_object(id)
