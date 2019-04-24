@@ -71,24 +71,16 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Castrol GTX 0W-20 5Qts</td>
-          <td>24.95</td>
-          <td>1</td>
-          <td class="table__controls"><a>Edit</a> / <a>Delete</a></td>
-        </tr>
-        <tr>
-          <td>Bosch oil filter</td>
-          <td>7.99</td>
-          <td>1</td>
-          <td class="table__controls"><a>Edit</a> / <a>Delete</a></td>
-        </tr>
-        <tr>
-          <td>Can of Brakleen</td>
-          <td>2.99</td>
-          <td>2</td>
-          <td class="table__controls"><a>Edit</a> / <a>Delete</a></td>
-        </tr>
+          {% for part in part_list %}
+            {% if task.id == part.task_id %}
+            <tr>
+              <td>{{part.name}}</td>
+              <td>{{part.price}}</td>
+              <td>{{part.quantity}}</td>
+              <td class="table__controls"><a>Edit</a> / <a>Delete</a></td>
+            </tr>
+            {% endif %}
+          {% endfor %}
       </tbody>
     </table>
     <label for="complete">Complete Task</label>
