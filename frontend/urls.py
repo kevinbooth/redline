@@ -10,14 +10,18 @@ app_name = 'frontend'
 urlpatterns = [
     path('', HomeView.as_view(), name="home"),
     path(
-            'login/',
-            auth_views.LoginView.as_view(template_name='frontend/login.html'),
-            name="login"
+         'login/',
+         auth_views.LoginView.as_view(template_name='frontend/login.html'),
+         name="login"
         ),
     path('logout/', LogoutView.as_view(), name="logout"),
     path('register/', RegisterView.as_view(), name="register"),
     path('new-car/', NewCarView.as_view(), name="new-car"),
     path('car/<id>/', CarView.as_view(), name="car"),
     path('car/<id>/new-task/', NewTaskView.as_view(), name="new-task"),
-    path('car/<car_id>/task/<task_id>/new-part', NewPartView.as_view(), name="new-part"),
+    path(
+         'car/<car_id>/task/<task_id>/new-part',
+         NewPartView.as_view(),
+         name="new-part"
+         )
 ]

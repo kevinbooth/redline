@@ -19,8 +19,8 @@ class NewPartView(TemplateView):
                                 self.request.user.auth_token
                                 )
         task = self.get_from_api('task/' + task_id,
-                                self.request.user.auth_token
-                                )
+                                 self.request.user.auth_token
+                                 )
         part_list = self.get_from_api(
                                       'parts/',
                                       self.request.user.auth_token
