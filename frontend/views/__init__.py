@@ -6,6 +6,7 @@ from .register_view import RegisterView
 from .new_car_view import NewCarView
 from .new_task_view import NewTaskView
 from .new_part_view import NewPartView
+from .edit_task_view import EditTaskView
 
 __all__ = [
     'CarView',
@@ -15,5 +16,6 @@ __all__ = [
     'RegisterView'
     'NewCarView',
     'NewTaskView',
-    'NewPartView'
+    'NewPartView',
+    'EditTaskView'
 ]

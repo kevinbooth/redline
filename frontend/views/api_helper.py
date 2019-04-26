@@ -12,7 +12,7 @@ class APIHelper():
         response = requests.get(API_ROOT_URL + url,
                                 headers={'Authorization': 'Token ' + str(auth)}
                                 )
-        print(response)
+
         data = response.json()
         return data
 
