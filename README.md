@@ -1,4 +1,4 @@
-# redline-project
+# Redline
 #### Car Modification Tracking Application
 
 ## Local development steps
