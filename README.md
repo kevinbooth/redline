@@ -71,8 +71,8 @@ python manage.py runserver
 ## Frontend
 #### The frontend utilizes Django's templating language and TemplateViews. Very little JavaScript is used.
 #### Pages:
-* Login - Form to login (This works and isn't static)
-* Register - Form to register (This works and isn't static)
+* Login - Form to login
+* Register - Form to register
 * Dashboard - Home screen once logged in
 * Car Detail - Shows specific information on a single car
 * New Car - Page to add a new car to your account
