@@ -31,6 +31,7 @@
             <th>Task name</th>
             <th>Notes</th>
             <th>Due Date</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -40,6 +41,10 @@
               <td>{{task.name}}</td>
               <td>{{task.notes}}</td>
               <td>{{task.due_date}}</td>
+              <td class="table__controls">
+                <a href="/car/{{car.id}}/edit-task/{{task.id}}">Edit</a> /
+                <a>Delete</a>
+              </td>
             </tr>
             {% endif %}
           {% endfor %}
@@ -53,6 +58,7 @@
             <th>Task name</th>
             <th>Notes</th>
             <th>Completion Date</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -62,6 +68,10 @@
               <td>{{task.name}}</td>
               <td>{{task.notes}}</td>
               <td>{{task.completion_date}}</td>
+              <td class="table__controls">
+                <a href="/car/{{car.id}}/edit-task/{{task.id}}">Edit</a> /
+                <a>Delete</a>
+              </td>
             </tr>
             {% endif %}
           {% endfor %}
@@ -131,7 +141,8 @@ var closeButtons = document.getElementsByClassName('modal__close');
 var modalOverlay = document.querySelector("#modal__overlay");
 
 for (var i = 0; i < tasks.length; i++) {
-  tasks[i].addEventListener("click", function() {
+  tasks[i].addEventListener("click", function(e) {
+    if (e.target.tagName.toLowerCase() === "a") return;
     modal = document.querySelector('#task-modal-' + this.id);
     modal.classList.toggle("closed");
     modalOverlay.classList.toggle("closed");
