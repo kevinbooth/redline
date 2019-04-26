@@ -38,7 +38,6 @@ python manage.py runserver
 * Django==2.1.7
 * djangorestframework==3.9.1
 * idna==2.8
-* pkg-resources==0.0.0
 * pycodestyle==2.5.0
 * pytz==2018.9
 * requests==2.21.0
@@ -70,13 +69,18 @@ python manage.py runserver
 ```
 
 ## Frontend
-#### There are currently five pages on the frontend. It is fully static with no dynamic data as of now. However, register, login, and logout functionality is working on the frontend.
+#### The frontend utilizes Django's templating language and TemplateViews. Very little JavaScript is used.
 #### Pages:
-* Dashboard - Home screen once logged in
-* New Car - Page to add a new car to your account
 * Login - Form to login (This works and isn't static)
 * Register - Form to register (This works and isn't static)
+* Dashboard - Home screen once logged in
 * Car Detail - Shows specific information on a single car
+* New Car - Page to add a new car to your account
+* New Task - Page to add a new task to a car
+* New Part - Page to add a new part to a task
+* Edit Task - Page to edit an existing task
+* Edit Car - (Coming soon)
+* Edit Part - (Coming soon)
 
 #### Instructions
 * To see the frontend, start server
@@ -84,3 +88,6 @@ python manage.py runserver
 python manage.py runserver
 ```
 * Navigate to `127.0.0.1:8000/` in a browser
+* You will be directed to a login page
+* If you do not have a login, click the link to register an account
+* Once logged in, you have access to all the views
