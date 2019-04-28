@@ -7,7 +7,7 @@ from rest_framework.authtoken.models import Token
 from rest_framework.views import status
 from django.urls import reverse
 from django.contrib.auth.models import User
-from redline.models import Car
+from redline.models import Task
 
 
 class BaseViewTest(APITestCase):
@@ -53,6 +53,16 @@ class BaseViewTest(APITestCase):
 
 class TaskEndpointTest(BaseViewTest):
     def test_get_action(self):
+        """
+        This test ensures that all the tasks for this account
+        are returned without any issues.
+        """
+
+        response = self.client.get(
+            reverse("tasks", kwargs={'version': 'v1'}),
+            format='json'
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.assertEquals(True, False)
 
