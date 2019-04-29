@@ -59,12 +59,10 @@ class TaskEndpointTest(BaseViewTest):
         """
 
         response = self.client.get(
-            reverse("tasks", kwargs={'version': 'v1'}),
+            reverse("task", kwargs={'version': 'v1'}),
             format='json'
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
-
-        self.assertEquals(True, False)
 
     def test_post_action(self):
 
