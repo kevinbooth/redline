@@ -65,7 +65,7 @@ class TaskEndpointTest(BaseViewTest):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_post_action(self):
-"""
+        """
         This test ensure that a task is successfully added
         when we make a POST request to the tasks/ endpoint
         """
