@@ -78,8 +78,14 @@ class TaskEndpointTest(BaseViewTest):
         self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
     def test_delete_action(self):
+        """
+        This test ensures that a task is deleted from a user.
+        """
 
-        self.assertEquals(True, False)
+        response = self.client.delete(
+            reverse("task", kwargs={'version': 'v1', 'id': id}),
+        )
+        self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_put_action(self):
 
