@@ -65,8 +65,17 @@ class TaskEndpointTest(BaseViewTest):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
     def test_post_action(self):
+"""
+        This test ensure that a task is successfully added
+        when we make a POST request to the tasks/ endpoint
+        """
 
-        self.assertEquals(True, False)
+        response = self.client.post(
+            reverse("task", kwargs={'version': 'v1'}),
+            self.task_post_data,
+            format='json'
+        )
+        self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 
     def test_delete_action(self):
 

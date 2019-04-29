@@ -86,10 +86,15 @@ python manage.py runserver
 * Navigate to `127.0.0.1:8000/` in a browser
 
 ## Endpoints
-* Car Endpoint
-
-* Part Endpoint
-
-* Task Endpoint
-
-* User Endpoint
+### Car Endpoint
+* This endpoint holds all of the information for the cars owned by a user.
+* 
+### Part Endpoint
+* This endpoint holds all the information about the parts needed for tasks.
+*
+### Task Endpoint
+* This endpoint holds all of the information for each task needed to be performed on the cars.
+*
+### User Endpoint
+* This endpoint holds all of the information for the user who can own cars.
+*
