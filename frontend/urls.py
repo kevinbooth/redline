@@ -24,7 +24,7 @@ urlpatterns = [
     path('car/<car_id>/edit-task/<task_id>/',
          EditTaskView.as_view(),
          name="edit-task"),
-    path('car/<car_id>/task/<task_id>/new-part',
+    path('car/<car_id>/task/<task_id>/new-part/',
          NewPartView.as_view(),
          name="new-part")
 ]

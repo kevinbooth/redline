@@ -23,10 +23,10 @@
     <div class="five columns">
       <h1 class="page__title">Edit a Task</h1>
       <div class="task__button">
-        <a href="/car/{{car.id}}/task/{{task.id}}/new-part" class="button">Add New Part</a>
+        <a href="/car/{{car.id}}/task/{{task.id}}/new-part/" class="button">Add New Part</a>
       </div>
       <p>{{message}}</p>
-      <form method="post" action="/car/{{car.id}}/edit-task/{{task.id}}">
+      <form method="post" action="/car/{{car.id}}/edit-task/{{task.id}}/">
         {% csrf_token %}
         <label for="name">Name*</label>
         <input class="form__input" type="text" value="{{task.name}}" placeholder="Enter the task name" name="name" required>
