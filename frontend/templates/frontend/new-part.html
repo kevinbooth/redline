@@ -24,7 +24,7 @@
       <h1 class="page__title">Add a New Part</h1>
       <h4 class="page__subtitle">Task: {{task.name}}</h4>
       <p>{{message}}</p>
-      <form method="post" action="/car/{{car.id}}/task/{{task.id}}/new-part">
+      <form method="post" action="/car/{{car.id}}/task/{{task.id}}/new-part/">
         {% csrf_token %}
         <label for="name">Name*</label>
         <input class="form__input" type="text" placeholder="Enter the part name" name="name" required>
