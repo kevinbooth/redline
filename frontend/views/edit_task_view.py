@@ -18,7 +18,7 @@ class EditTaskView(TemplateView):
         car = APIHelper.get_from_api('car/' + car_id,
                                      self.request.user.auth_token)
         task = APIHelper.get_from_api('task/' + task_id,
-                                     self.request.user.auth_token)
+                                      self.request.user.auth_token)
         context['car'] = car
         context['task'] = task
 
@@ -32,8 +32,8 @@ class EditTaskView(TemplateView):
             if form.cleaned_data.get('completion_date') == '':
                 form.cleaned_data['completion_date'] = None
             APIHelper.put_to_api('task/' + task_id,
-                                  self.request.user.auth_token,
-                                  form.cleaned_data)
+                                 self.request.user.auth_token,
+                                 form.cleaned_data)
             context = self.get_context_data(car_id, task_id)
             context['message'] = 'Thank you! Your task has been updated.'
             return render(request, self.template_name, context)

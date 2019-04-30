@@ -20,9 +20,12 @@ class CarObjectView(APIView):
 
     def get(self, request, version, id, format=None):
         car = self.get_object(id)
-        open_task_count = Task.objects.filter(car_id=id, completion_date=None).count()
+        open_task_count = Task.objects.filter(
+                                              car_id=id,
+                                              completion_date=None
+                                              ).count()
         serializer = CarSerializer(car)
-        data  = dict(serializer.data)
+        data = dict(serializer.data)
         data['open_task_count'] = open_task_count
         return Response(data)
 

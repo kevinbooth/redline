@@ -2,7 +2,7 @@ from frontend.constants import APP_TEMPLATE_DIR, API_ROOT_URL
 from frontend.views.api_helper import APIHelper
 from django.views.generic.base import TemplateView
 from django.shortcuts import render
-#from frontend.forms import EditCarForm
+# from frontend.forms import EditCarForm
 
 
 class EditCarView(TemplateView):
