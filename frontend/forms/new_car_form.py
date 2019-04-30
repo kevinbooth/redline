@@ -2,8 +2,8 @@ from django import forms
 
 
 class NewCarForm(forms.Form):
-    vin = forms.charField(Label="Vin", Max_Length=18)
-    year = forms.integerField(Label="Year")
-    make = forms.charField(Label="Make", Max_Length=12)
-    model = forms.charField(Label="Model", Max_length=15)
-    color = forms.charField(Label="Color", Max_Length=10)
+    vin = forms.CharField(label="Vin", max_length=18)
+    year = forms.IntegerField(label="Year")
+    make = forms.CharField(label="Make", max_length=100)
+    model = forms.CharField(label="Model", max_length=100)
+    color = forms.CharField(label="Color", max_length=100)

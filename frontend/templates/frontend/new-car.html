@@ -7,22 +7,26 @@
   </div>
   <div class="row">
     <div class="five columns">
-      <label for="uname">VIN</label>
-      <input class="form__input" type="text" placeholder="Enter the car's VIN" name="vin" required>
+      <p>{{message}}</p>
+      <form method="post" action="/new-car/">
+        {% csrf_token %}
+        <label for="uname">VIN</label>
+        <input class="form__input" type="text" placeholder="Enter the car's VIN" name="vin" required>
 
-      <label for="uname">Year</label>
-      <input class="form__input" type="text" placeholder="Enter the car's year" name="year" required>
+        <label for="uname">Year</label>
+        <input class="form__input" type="text" placeholder="Enter the car's year" name="year" required>
 
-      <label for="uname">Make</label>
-      <input class="form__input" type="text" placeholder="Enter the car's make" name="make" required>
+        <label for="uname">Make</label>
+        <input class="form__input" type="text" placeholder="Enter the car's make" name="make" required>
 
-      <label for="uname">Model</label>
-      <input class="form__input" type="text" placeholder="Enter the car's model" name="model" required>
+        <label for="uname">Model</label>
+        <input class="form__input" type="text" placeholder="Enter the car's model" name="model" required>
 
-      <label for="psw">Color</label>
-      <input class="form__input" type="text" placeholder="Enter the car's color" name="color" required>
+        <label for="psw">Color</label>
+        <input class="form__input" type="text" placeholder="Enter the car's color" name="color" required>
 
-      <button class="form__submit" type="submit">Add New Car</button>
+        <button class="form__submit" type="submit">Add New Car</button>
+      </form>
     </div>
     <div class="seven columns">
       <p>Join the free car management platform.</p>
