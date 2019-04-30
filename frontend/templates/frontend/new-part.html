@@ -1,0 +1,72 @@
+{% extends 'frontend/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container form">
+  <div class="row">
+    <div class="three columns">
+      <div class="car-sidebar">
+        <div class="car-sidebar__background">
+          <img src="{% static 'images/tiny-car-icon.png' %}"class="car-sidebar__icon" >
+        </div>
+        <div class="car-sidebar__copy">
+          <div class="car-sidebar__info">{{car.year}} {{car.make}} {{car.model}}</div>
+          <label class="car-sidebar__label">Color:</label>
+          <div class="car-sidebar__info">{{car.color}}</div>
+          <label class="car-sidebar__label">VIN:</label>
+          <div class="car-sidebar__info">{{car.vin}}</div>
+          <label class="car-sidebar__label">Open Tasks:</label>
+          <div class="car-sidebar__info car-sidebar__info--task">{{car.open_task_count}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="five columns">
+      <h1 class="page__title">Add a New Part</h1>
+      <h4 class="page__subtitle">Task: {{task.name}}</h4>
+      <p>{{message}}</p>
+      <form method="post" action="/car/{{car.id}}/task/{{task.id}}/new-part/">
+        {% csrf_token %}
+        <label for="name">Name*</label>
+        <input class="form__input" type="text" placeholder="Enter the part name" name="name" required>
+
+        <label for="notes">Price*</label>
+        <input class="form__input" type="number" placeholder="Enter the price of the part" name="price" required>
+
+        <label for="estimated_hours">Quantity*</label>
+        <input class="form__input" type="number" placeholder="Enter the quantity of this part you need" name="quantity" required>
+
+        <button class="button" type="submit">Save</button>
+      </form>
+    </div>
+  </div>
+  <div class="row">
+    <div class="twelve columns">
+      <h4 class="page__subtitle">Parts</h4>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for part in part_list %}
+              {% if task.id == part.task_id %}
+              <tr>
+                <td>{{part.name}}</td>
+                <td>{{part.price}}</td>
+                <td>{{part.quantity}}</td>
+                <td class="table__controls">
+                  <a>Edit</a> / <a>Delete</a>
+                </td>
+              </tr>
+              {% endif %}
+            {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+{% endblock %}

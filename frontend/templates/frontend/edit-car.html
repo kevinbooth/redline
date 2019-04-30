@@ -21,26 +21,26 @@
       </div>
     </div>
     <div class="five columns">
-      <h1 class="page__title">Add a New Task</h1>
+      <h1 class="page__title">Edit Car</h1>
       <p>{{message}}</p>
-      <form method="post" action="/car/{{car.id}}/new-task/">
+      <form method="post" action="/edit-car/{{car.id}}/">
         {% csrf_token %}
-        <label for="name">Name*</label>
-        <input class="form__input" type="text" placeholder="Enter the task name" name="name" required>
+        <label for="year">Year*</label>
+        <input class="form__input" type="text" value="{{car.year}}" placeholder="Enter the car year" name="year" required>
 
-        <label for="notes">Notes*</label>
-        <textarea class="form__input" rows="5" type="text" placeholder="Enter some notes about the task" name="notes" required></textarea>
+        <label for="make">Make*</label>
+        <input class="form__input" type="text" value="{{car.make}}" placeholder="Enter the car make" name="make" required>
 
-        <label for="estimated_hours">Estimated Hours*</label>
-        <input class="form__input" type="number" placeholder="Enter the estimated hours to finish" name="estimated_hours" required>
+        <label for="model">Model*</label>
+        <input class="form__input" type="text" value="{{car.model}}" placeholder="Enter the car model" name="model" required>
 
-        <label for="due_date">Due Date*</label>
-        <input class="form__input" type="date" placeholder="Enter the car's model" name="due_date" required>
+        <label for="vin">VIN*</label>
+        <input class="form__input" type="text" value="{{car.vin}}" placeholder="Enter the car's VIN" name="vin" required>
 
-        <label for="completion_date">Completion Date</label>
-        <input class="form__input" type="date" placeholder="Enter the car's color" name="completion_date">
+        <label for="color">Color*</label>
+        <input class="form__input" type="text" value="{{car.color}}" placeholder="Enter the car's color" name="color">
 
-        <button class="button" type="submit">Save</button>
+        <button class="button" type="submit">Save Car</button>
       </form>
     </div>
   </div>

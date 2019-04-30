@@ -230,6 +230,9 @@ tr:hover {
   cursor: pointer;
   font-size: 12px;
 }
+.table__controls a {
+  text-decoration: none;
+}
 
 /* Modal styles */
 .modal {
@@ -296,6 +299,9 @@ tr:hover {
 .task__button {
   float: right;
   margin-top: 20px;
+}
+.task {
+  cursor: pointer;
 }
 
 /* Error styles */

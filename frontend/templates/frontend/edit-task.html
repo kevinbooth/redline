@@ -21,24 +21,27 @@
       </div>
     </div>
     <div class="five columns">
-      <h1 class="page__title">Add a New Task</h1>
+      <h1 class="page__title">Edit a Task</h1>
+      <div class="task__button">
+        <a href="/car/{{car.id}}/task/{{task.id}}/new-part/" class="button">Add New Part</a>
+      </div>
       <p>{{message}}</p>
-      <form method="post" action="/car/{{car.id}}/new-task/">
+      <form method="post" action="/car/{{car.id}}/edit-task/{{task.id}}/">
         {% csrf_token %}
         <label for="name">Name*</label>
-        <input class="form__input" type="text" placeholder="Enter the task name" name="name" required>
+        <input class="form__input" type="text" value="{{task.name}}" placeholder="Enter the task name" name="name" required>
 
         <label for="notes">Notes*</label>
-        <textarea class="form__input" rows="5" type="text" placeholder="Enter some notes about the task" name="notes" required></textarea>
+        <textarea class="form__input" rows="5" type="text" placeholder="Enter some notes about the task" name="notes" required>{{task.notes}}</textarea>
 
         <label for="estimated_hours">Estimated Hours*</label>
-        <input class="form__input" type="number" placeholder="Enter the estimated hours to finish" name="estimated_hours" required>
+        <input class="form__input" type="number" value="{{task.estimated_hours}}" placeholder="Enter the estimated hours to finish" name="estimated_hours" required>
 
         <label for="due_date">Due Date*</label>
-        <input class="form__input" type="date" placeholder="Enter the car's model" name="due_date" required>
+        <input class="form__input" type="date" value="{{task.due_date}}" placeholder="Enter the car's model" name="due_date" required>
 
         <label for="completion_date">Completion Date</label>
-        <input class="form__input" type="date" placeholder="Enter the car's color" name="completion_date">
+        <input class="form__input" type="date" value="{{task.completion_date}}" placeholder="Enter the car's color" name="completion_date">
 
         <button class="button" type="submit">Save</button>
       </form>

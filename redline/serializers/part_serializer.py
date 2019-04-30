@@ -8,4 +8,10 @@ from redline.models import Part
 class PartSerializer(serializers.ModelSerializer):
     class Meta:
         model = Part
-        fields = ("id", "name", "price", "quantity")
+        fields = (
+                  "task_id",
+                  "id",
+                  "name",
+                  "price",
+                  "quantity"
+                  )

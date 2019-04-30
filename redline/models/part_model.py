@@ -7,7 +7,7 @@ from . import Task
 
 class Part(models.Model):
     task_id = models.ForeignKey(Task, on_delete=models.CASCADE)
-    name = models.CharField(max_length=20, null=False)
+    name = models.CharField(max_length=255, null=False)
     price = models.IntegerField(null=False)
     quantity = models.IntegerField(null=False)
 
