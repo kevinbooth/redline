@@ -1,4 +1,3 @@
-
 """
 Module to test task endpoints in the redline app
 """
@@ -50,7 +49,6 @@ class BaseViewTest(APITestCase):
         )
 
 
-
 class TaskEndpointTest(BaseViewTest):
     def test_get_action(self):
         """
@@ -59,7 +57,7 @@ class TaskEndpointTest(BaseViewTest):
         """
 
         response = self.client.get(
-            reverse("task", kwargs={'version': 'v1'}),
+            reverse("tasks", kwargs={'version': 'v1'}),
             format='json'
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -71,7 +69,7 @@ class TaskEndpointTest(BaseViewTest):
         """
 
         response = self.client.post(
-            reverse("task", kwargs={'version': 'v1'}),
+            reverse("tasks", kwargs={'version': 'v1'}),
             self.task_post_data,
             format='json'
         )
