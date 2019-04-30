@@ -6,12 +6,14 @@ from rest_framework.authtoken.models import Token
 from rest_framework.views import status
 from django.urls import reverse
 from django.contrib.auth.models import User
-from redline.models import Task
+from redline.models import Car, Task
 
 
 class BaseViewTest(APITestCase):
     client = APIClient()
     car_post_data = {}
+    task_post_data = {}
+    car_id = 0
     user_id = 0
 
     def setUp(self):
@@ -31,6 +33,8 @@ class BaseViewTest(APITestCase):
         )
 
         self.user_id = User.objects.get(username='jsmith').id
+        token = Token.objects.get(user__username='jsmith')
+        self.client.credentials(HTTP_AUTHORIZATION='Token ' + token.key)
         self.car_post_data = {
             'user_id': self.user_id,
             'vin': 'abc1234567890',
@@ -39,8 +43,23 @@ class BaseViewTest(APITestCase):
             'model': 'Corolla',
             'color': 'White'
         }
-        token = Token.objects.get(user__username='jsmith')
-        self.client.credentials(HTTP_AUTHORIZATION='Token ' + token.key)
+
+        response = self.client.post(
+            reverse("cars", kwargs={'version': 'v1'}),
+            self.car_post_data,
+            format='json'
+        )
+
+        self.car_id = Car.objects.get(vin='abc1234567890').id
+
+        self.task_post_data = {
+            "car_id": self.car_id,
+            "name": "Change oil",
+            "estimated_hours": 1,
+            "due_date": "2019-05-15",
+            "completion_date": None,
+            "notes": "Get high viscosity oil"
+        }
 
         response = self.client.post(
             reverse("cars", kwargs={'version': 'v1'}),
@@ -57,7 +76,7 @@ class TaskEndpointTest(BaseViewTest):
         """
 
         response = self.client.get(
-            reverse("tasks", kwargs={'version': 'v1'}),
+            reverse("tasks", kwargs={'version': 'v1', 'id': self.car_id}),
             format='json'
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -69,7 +88,7 @@ class TaskEndpointTest(BaseViewTest):
         """
 
         response = self.client.post(
-            reverse("tasks", kwargs={'version': 'v1'}),
+            reverse("tasks", kwargs={'version': 'v1', 'id': self.car_id}),
             self.task_post_data,
             format='json'
         )
@@ -79,9 +98,16 @@ class TaskEndpointTest(BaseViewTest):
         """
         This test ensures that a task is deleted from a user.
         """
+        self.client.post(
+            reverse("tasks", kwargs={'version': 'v1', 'id': self.car_id}),
+            self.task_post_data,
+            format='json'
+        )
+
+        task_id = Task.objects.get(car_id=self.car_id).id
 
         response = self.client.delete(
-            reverse("task", kwargs={'version': 'v1', 'id': id}),
+            reverse("task", kwargs={'version': 'v1', 'id': task_id}),
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
@@ -90,9 +116,16 @@ class TaskEndpointTest(BaseViewTest):
         This test ensure that a task is successfully added
         when we make a POST request to the task/ endpoint
         """
+        self.client.post(
+            reverse("tasks", kwargs={'version': 'v1', 'id': self.car_id}),
+            self.task_post_data,
+            format='json'
+        )
+
+        task_id = Task.objects.get(car_id=self.car_id).id
 
         response = self.client.put(
-            reverse("task", kwargs={'version': 'v1', 'id': id}),
+            reverse("task", kwargs={'version': 'v1', 'id': task_id}),
             self.task_post_data,
             format='json'
         )
