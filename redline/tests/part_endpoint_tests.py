@@ -13,7 +13,15 @@ class BaseViewTest(APITestCase):
 
 
 class PartEndpointTest(BaseViewTest):
+    def test_post_action(self):
+
+        self.assertEquals(True, False)
+
     def test_put_action(self):
+
+        self.assertEquals(True, False)
+        
+    def test_get_action(self):
 
         self.assertEquals(True, False)
 
