@@ -1,8 +1,8 @@
 from rest_framework.test import APITestCase, APIClient
 from rest_framework.views import status
 from django.urls import reverse
-from .models import Part
-from .serializers import PartSerializer, PartPostSerializer
+from redline.models import Part
+from redline.serializers import PartSerializer, PartPostSerializer
 
 
 class BaseViewTest(APITestCase):
