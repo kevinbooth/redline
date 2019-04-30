@@ -1,0 +1,48 @@
+{% extends 'frontend/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container form">
+  <div class="row">
+    <div class="three columns">
+      <div class="car-sidebar">
+        <div class="car-sidebar__background">
+          <img src="{% static 'images/tiny-car-icon.png' %}"class="car-sidebar__icon" >
+        </div>
+        <div class="car-sidebar__copy">
+          <div class="car-sidebar__info">{{car.year}} {{car.make}} {{car.model}}</div>
+          <label class="car-sidebar__label">Color:</label>
+          <div class="car-sidebar__info">{{car.color}}</div>
+          <label class="car-sidebar__label">VIN:</label>
+          <div class="car-sidebar__info">{{car.vin}}</div>
+          <label class="car-sidebar__label">Open Tasks:</label>
+          <div class="car-sidebar__info car-sidebar__info--task">{{car.open_task_count}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="five columns">
+      <h1 class="page__title">Edit Car</h1>
+      <p>{{message}}</p>
+      <form method="post" action="/edit-car/{{car.id}}/">
+        {% csrf_token %}
+        <label for="year">Year*</label>
+        <input class="form__input" type="text" value="{{car.year}}" placeholder="Enter the car year" name="year" required>
+
+        <label for="make">Make*</label>
+        <input class="form__input" type="text" value="{{car.make}}" placeholder="Enter the car make" name="make" required>
+
+        <label for="model">Model*</label>
+        <input class="form__input" type="text" value="{{car.model}}" placeholder="Enter the car model" name="model" required>
+
+        <label for="vin">VIN*</label>
+        <input class="form__input" type="text" value="{{car.vin}}" placeholder="Enter the car's VIN" name="vin" required>
+
+        <label for="color">Color*</label>
+        <input class="form__input" type="text" value="{{car.color}}" placeholder="Enter the car's color" name="color">
+
+        <button class="button" type="submit">Save Car</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
