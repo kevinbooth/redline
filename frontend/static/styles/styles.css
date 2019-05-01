@@ -176,6 +176,11 @@ tr:hover {
   font-weight: 600;
 }
 
+.car-tile__color {
+  color: black;
+  font-size: 20px;
+}
+
 /* Car sidebar styles */
 .car-sidebar {
   background-color: #fff;
@@ -310,4 +315,9 @@ tr:hover {
 }
 .error__message {
   font-size: 20px;
+}
+
+.back-button {
+  display: block;
+  text-decoration: none;
 }
