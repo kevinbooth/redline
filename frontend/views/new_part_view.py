@@ -39,8 +39,9 @@ class NewPartView(TemplateView):
     def post(self, request, car_id, task_id, **kwargs):
         """
         Handles any incoming post requests pointing to this view specifically
-        for creating a new car
+        for creating a new part
         """
+        context = {}
         form = NewPartForm(self.request.POST)
 
         if form.is_valid():
