@@ -42,6 +42,10 @@
 
         <button class="button" type="submit">Save Car</button>
       </form>
+      <form method="post" action="/edit-car/{{car.id}}/">
+        {% csrf_token %}
+        <input name="delete" type="submit" value="Delete Car">
+      </form>
     </div>
   </div>
 </div>

@@ -7,6 +7,7 @@ class APIHelper():
         """
         Sends a get requests to API_ROOT_URL/url
         @param url : string
+        @param auth : string
         @return json api response
         """
         response = requests.get(API_ROOT_URL + url,
@@ -18,8 +19,9 @@ class APIHelper():
 
     def post_to_api(url, auth, data=''):
         """
-        Sends a get requests to API_ROOT_URL/url
+        Sends a post requests to API_ROOT_URL/url
         @param url : string
+        @param auth : string
         @param data : json (optional)
         @return json api response
         """
@@ -33,7 +35,7 @@ class APIHelper():
 
     def public_post_to_api(url, data=''):
         """
-        Sends a get requests to API_ROOT_URL/url
+        Sends a post requests to API_ROOT_URL/url
         @param url : string
         @param data : json (optional)
         @return json api response
@@ -44,12 +46,27 @@ class APIHelper():
 
     def put_to_api(url, auth, data=''):
         """
-        Sends a get requests to API_ROOT_URL/url
+        Sends a put requests to API_ROOT_URL/url
         @param url : string
+        @param auth : string
         @param data : json (optional)
         @return json api response
         """
         response = requests.put(API_ROOT_URL + url,
+                                headers={'Authorization': 'Token ' +
+                                         str(auth)},
+                                json=data)
+        data = response.json()
+        return data
+
+    def delete_from_api(url, auth, data=''):
+        """
+        Sends a delete requests to API_ROOT_URL/url
+        @param url : string
+        @param auth : string
+        @return json api response
+        """
+        response = requests.delete(API_ROOT_URL + url,
                                 headers={'Authorization': 'Token ' +
                                          str(auth)},
                                 json=data)
