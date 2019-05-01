@@ -1,3 +1,8 @@
+"""
+frontend/views/edit_task_view.py
+Author: Kevin Booth
+Last Updated: 5/1/2019
+"""
 from frontend.constants import APP_TEMPLATE_DIR, API_ROOT_URL
 from frontend.views.api_helper import APIHelper
 from django.views.generic.base import TemplateView
@@ -6,7 +11,11 @@ from frontend.forms import NewTaskForm
 
 
 class EditTaskView(TemplateView):
-
+    """
+    Class that handles the edit task frontend view
+    GET - Returns default template
+    POST - Sends edited task data to edit a task or delete a task
+    """
     template_name = APP_TEMPLATE_DIR + "edit-task.html"
 
     def get_context_data(self, car_id, task_id, **kwargs):
@@ -25,6 +34,10 @@ class EditTaskView(TemplateView):
         return context
 
     def post(self, request, car_id, task_id, **kwargs):
+        """
+        Handles any incoming post requests pointing to this view specifically
+        for editing a task and deleting a task
+        """
         form = NewTaskForm(self.request.POST)
 
         if form.is_valid():

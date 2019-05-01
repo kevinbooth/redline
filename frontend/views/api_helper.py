@@ -1,8 +1,16 @@
+"""
+frontend/views/api_helper.py
+Author: Kevin Booth
+Last Updated: 5/1/2019
+"""
 from frontend.constants import APP_TEMPLATE_DIR, API_ROOT_URL
 import requests
 
 
 class APIHelper():
+    """
+    Class that provides helper functions to access the api
+    """
     def get_from_api(url, auth):
         """
         Sends a get requests to API_ROOT_URL/url

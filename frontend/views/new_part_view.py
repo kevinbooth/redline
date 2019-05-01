@@ -1,3 +1,8 @@
+"""
+frontend/views/new_part_view.py
+Author: Kevin Booth
+Last Updated: 5/1/2019
+"""
 from frontend.constants import APP_TEMPLATE_DIR, API_ROOT_URL
 from frontend.views.api_helper import APIHelper
 from django.views.generic.base import TemplateView
@@ -6,7 +11,11 @@ from frontend.forms import NewPartForm
 
 
 class NewPartView(TemplateView):
-
+    """
+    Class that handles the new part frontend view
+    GET - Returns default template
+    POST - Sends new part data to create a part
+    """
     template_name = APP_TEMPLATE_DIR + "new-part.html"
 
     def get_context_data(self, car_id, task_id, **kwargs):
@@ -28,6 +37,10 @@ class NewPartView(TemplateView):
         return context
 
     def post(self, request, car_id, task_id, **kwargs):
+        """
+        Handles any incoming post requests pointing to this view specifically
+        for creating a new car
+        """
         form = NewPartForm(self.request.POST)
 
         if form.is_valid():
