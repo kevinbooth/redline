@@ -25,7 +25,7 @@ class PartObjectView(APIView):
 
     def put(self, request, version, id, format=None):
         part = self.get_object(id)
-        serializer = artSerializer(part, data=request.data)
+        serializer = PartSerializer(part, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
