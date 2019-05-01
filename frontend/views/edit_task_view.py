@@ -6,7 +6,8 @@ Last Updated: 5/1/2019
 from frontend.constants import APP_TEMPLATE_DIR, API_ROOT_URL
 from frontend.views.api_helper import APIHelper
 from django.views.generic.base import TemplateView
-from django.shortcuts import render
+from django.shortcuts import render, reverse
+from django.http import HttpResponseRedirect
 from frontend.forms import NewTaskForm
 
 
@@ -38,18 +39,24 @@ class EditTaskView(TemplateView):
         Handles any incoming post requests pointing to this view specifically
         for editing a task and deleting a task
         """
-        form = NewTaskForm(self.request.POST)
-
-        if form.is_valid():
-            form.cleaned_data['car_id'] = car_id
-            if form.cleaned_data.get('completion_date') == '':
-                form.cleaned_data['completion_date'] = None
-            APIHelper.put_to_api('task/' + task_id,
-                                 self.request.user.auth_token,
-                                 form.cleaned_data)
-            context = self.get_context_data(car_id, task_id)
-            context['message'] = 'Thank you! Your task has been updated.'
-            return render(request, self.template_name, context)
+        if request.POST.get("delete"):
+            response = APIHelper.delete_from_api('task/' + task_id,
+                                                 self.request.user.auth_token)
+            return HttpResponseRedirect('/')
         else:
-            context['message'] = 'There was an error with your request.'
-            return render(request, self.template_name, context)
+            context = {}
+            form = NewTaskForm(self.request.POST)
+
+            if form.is_valid():
+                form.cleaned_data['car_id'] = car_id
+                if form.cleaned_data.get('completion_date') == '':
+                    form.cleaned_data['completion_date'] = None
+                APIHelper.put_to_api('task/' + task_id,
+                                     self.request.user.auth_token,
+                                     form.cleaned_data)
+                context = self.get_context_data(car_id, task_id)
+                context['message'] = 'Thank you! Your task has been updated.'
+                return render(request, self.template_name, context)
+            else:
+                context['message'] = 'There was an error with your request.'
+                return render(request, self.template_name, context)

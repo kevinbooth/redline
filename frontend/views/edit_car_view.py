@@ -7,9 +7,9 @@ from frontend.constants import APP_TEMPLATE_DIR, API_ROOT_URL
 from frontend.views.api_helper import APIHelper
 from django.views.generic.base import TemplateView
 from django.shortcuts import render
-from django.urls import reverse
 from django.http import HttpResponseRedirect
 from frontend.forms import NewCarForm
+from frontend.views import HomeView
 
 
 class EditCarView(TemplateView):
@@ -37,11 +37,22 @@ class EditCarView(TemplateView):
         Handles any incoming post requests pointing to this view specifically
         for editing a car and deleting a car
         """
+        context = {}
         if request.POST.get("delete"):
             response = APIHelper.delete_from_api('car/' + id,
                                                  self.request.user.auth_token)
-            self.template_name = APP_TEMPLATE_DIR + "home.html"
-            return HttpResponseRedirect(reverse('home', kwargs={'version': 'v1'}))
+            return HttpResponseRedirect('/')
         else:
-            print("in else")
-            return render(request, self.template_name)
+            form = NewCarForm(self.request.POST)
+
+            if form.is_valid():
+                form.cleaned_data['car_id'] = id
+                APIHelper.put_to_api('car/' + id,
+                                     self.request.user.auth_token,
+                                     form.cleaned_data)
+                context = self.get_context_data(id)
+                context['message'] = 'Thank you! Your car has been updated.'
+                return render(request, self.template_name, context)
+            else:
+                context['message'] = 'There was an error with your request.'
+                return render(request, self.template_name, context)
