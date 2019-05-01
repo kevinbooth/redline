@@ -11,12 +11,12 @@ class PartView(APIView):
     GET - Retrieves a list of all Parts
     POST - Creates a new Part
     """
-    def get(self, request, version, format=None):
+    def get(self, request, format=None):
         parts = Part.objects.all()
         serializer = PartSerializer(parts, many=True)
         return Response(serializer.data)
 
-    def post(self, request, version, format=None):
+    def post(self, request, format=None):
         serializer = PartPostSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()

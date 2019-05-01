@@ -19,12 +19,12 @@ class TaskObjectView(APIView):
         except Task.DoesNotExist:
             return None
 
-    def get(self, request, version, id, format=None):
+    def get(self, request, id, format=None):
         task = self.get_object(id)
         serializer = TaskSerializer(task)
         return Response(serializer.data)
 
-    def put(self, request, version, id, format=None):
+    def put(self, request, id, format=None):
         task = self.get_object(id)
         serializer = TaskSerializer(task, data=request.data)
         if serializer.is_valid():
@@ -32,7 +32,7 @@ class TaskObjectView(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def delete(self, request, version, id, format=None):
+    def delete(self, request, id, format=None):
         task = self.get_object(id)
         if task:
             task.delete()

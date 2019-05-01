@@ -11,12 +11,12 @@ class TaskView(APIView):
     GET - Retrieves a list of all the Tasks for a specified Car
     POST - Creates a new Task
     """
-    def get(self, request, id, version, format=None):
+    def get(self, request, id, format=None):
         tasks = Task.objects.filter(car_id=id)
         serializer = TaskSerializer(tasks, many=True)
         return Response(serializer.data)
 
-    def post(self, request, id, version, format=None):
+    def post(self, request, id, format=None):
         serializer = TaskPostSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()

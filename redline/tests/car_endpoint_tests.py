@@ -25,7 +25,7 @@ class BaseViewTest(APITestCase):
             'password': 'abc123'
         }
         response = self.client.post(
-            reverse("auth", kwargs={'version': 'v1'}),
+            reverse("auth"),
             user_post_data,
             format='json'
         )
@@ -43,7 +43,7 @@ class BaseViewTest(APITestCase):
         self.client.credentials(HTTP_AUTHORIZATION='Token ' + token.key)
 
         response = self.client.post(
-            reverse("cars", kwargs={'version': 'v1'}),
+            reverse("cars"),
             self.car_post_data,
             format='json'
         )
@@ -57,7 +57,7 @@ class CarEndpointTest(BaseViewTest):
         """
 
         response = self.client.get(
-            reverse("cars", kwargs={'version': 'v1'}),
+            reverse("cars"),
             format='json'
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -69,7 +69,7 @@ class CarEndpointTest(BaseViewTest):
         """
 
         response = self.client.post(
-            reverse("cars", kwargs={'version': 'v1'}),
+            reverse("cars"),
             self.car_post_data,
             format='json'
         )
@@ -82,7 +82,7 @@ class CarEndpointTest(BaseViewTest):
         car_id = Car.objects.get(vin='abc1234567890').id
 
         response = self.client.delete(
-            reverse("car", kwargs={'version': 'v1', 'id': car_id}),
+            reverse("car", kwargs={'id': car_id}),
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
@@ -94,7 +94,7 @@ class CarEndpointTest(BaseViewTest):
         car_id = Car.objects.get(vin='abc1234567890').id
 
         response = self.client.put(
-            reverse("car", kwargs={'version': 'v1', 'id': car_id}),
+            reverse("car", kwargs={'id': car_id}),
             self.car_post_data,
             format='json'
         )

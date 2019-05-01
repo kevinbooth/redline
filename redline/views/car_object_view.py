@@ -18,7 +18,7 @@ class CarObjectView(APIView):
         except Car.DoesNotExist:
             return None
 
-    def get(self, request, version, id, format=None):
+    def get(self, request, id, format=None):
         car = self.get_object(id)
         open_task_count = Task.objects.filter(
                                               car_id=id,
@@ -29,7 +29,7 @@ class CarObjectView(APIView):
         data['open_task_count'] = open_task_count
         return Response(data)
 
-    def put(self, request, version, id, format=None):
+    def put(self, request, id, format=None):
         car = self.get_object(id)
         serializer = CarSerializer(car, data=request.data)
         if serializer.is_valid():
@@ -37,7 +37,7 @@ class CarObjectView(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def delete(self, request, version, id, format=None):
+    def delete(self, request, id, format=None):
         car = self.get_object(id)
         if car:
             car.delete()

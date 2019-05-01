@@ -21,7 +21,7 @@ from frontend.views import Error404View
 urlpatterns = [
     path('', include('frontend.urls')),
     path('admin/', admin.site.urls),
-    re_path('api/(?P<version>(v1|v2))/', include('redline.urls')),
+    re_path('api/', include('redline.urls')),
 ]
 
 handler404 = Error404View.as_view()
