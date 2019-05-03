@@ -29,15 +29,17 @@ class NewPartView(TemplateView):
 
     def post(self, request, car_id, task_id, **kwargs):
         form = NewPartForm(self.request.POST)
+        context = self.get_context_data(car_id, task_id)
+
 
         if form.is_valid():
             form.cleaned_data['task_id'] = task_id
             APIHelper.post_to_api('parts/',
                                   self.request.user.auth_token,
                                   form.cleaned_data)
-            context = self.get_context_data(car_id, task_id)
             context['message'] = 'Thank you! Your part has been saved.'
             return render(request, self.template_name, context)
         else:
             context['message'] = 'There was an error with your request.'
             return render(request, self.template_name, context)
+ 
