@@ -79,8 +79,8 @@ python manage.py runserver
 * New Task - Page to add a new task to a car
 * New Part - Page to add a new part to a task
 * Edit Task - Page to edit an existing task
-* Edit Car - (Coming soon)
-* Edit Part - (Coming soon)
+* Edit Car - Page to edit an existing Car
+* Edit Part - Page to edit an existing part
 
 #### Instructions
 * To see the frontend, start server
