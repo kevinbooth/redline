@@ -6,6 +6,9 @@ from django.contrib.auth.models import User
 
 
 class Car(models.Model):
+    """
+    Class for the Car Model that defines each field.
+    """
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
     vin = models.CharField(max_length=17, null=False)
     year = models.IntegerField(null=False)

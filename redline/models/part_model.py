@@ -6,6 +6,9 @@ from . import Task
 
 
 class Part(models.Model):
+    """
+    Class for the Part Model that defines each field.
+    """
     task_id = models.ForeignKey(Task, on_delete=models.CASCADE)
     name = models.CharField(max_length=255, null=False)
     price = models.IntegerField(null=False)
