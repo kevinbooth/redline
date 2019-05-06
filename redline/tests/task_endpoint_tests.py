@@ -10,6 +10,9 @@ from redline.models import Car, Task
 
 
 class BaseViewTest(APITestCase):
+    """
+    Class used to test the task endpoints in the redline app.
+    """
     client = APIClient()
     car_post_data = {}
     task_post_data = {}
@@ -17,6 +20,9 @@ class BaseViewTest(APITestCase):
     user_id = 0
 
     def setUp(self):
+        """
+        Used to create a user with a car and a task for testing purposes.
+        """
         User.objects.create_user(username="jsmith",
                                  email="jsmith@unh.edu",
                                  password="abc123",
