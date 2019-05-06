@@ -14,7 +14,7 @@ class PartView(APIView):
     GET - Retrieves a list of all Parts
     POST - Creates a new Part
     """
-    def get(self, request, version, format=None):
+    def get(self, request, format=None):
         """
         This method gets the information for each part resource.
         """
@@ -22,7 +22,7 @@ class PartView(APIView):
         serializer = PartSerializer(parts, many=True)
         return Response(serializer.data)
 
-    def post(self, request, version, format=None):
+    def post(self, request, format=None):
         """
         This method posts new information about the part resource.
         """

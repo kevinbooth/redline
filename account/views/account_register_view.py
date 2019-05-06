@@ -20,7 +20,7 @@ class AccountRegisterView(APIView):
     authentication_classes = ()
     permission_classes = ()
 
-    def post(self, request, version, format=None):
+    def post(self, request, format=None):
         """
         Register a user account
         """

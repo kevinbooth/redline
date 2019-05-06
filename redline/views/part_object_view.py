@@ -24,7 +24,7 @@ class PartObjectView(APIView):
         except Part.DoesNotExist:
             return None
 
-    def get(self, request, version, id, format=None):
+    def get(self, request, id, format=None):
         """
         This method takes care of the get action for the part resource.
         """
@@ -32,18 +32,18 @@ class PartObjectView(APIView):
         serializer = PartSerializer(part)
         return Response(serializer.data)
 
-    def put(self, request, version, id, format=None):
+    def put(self, request, id, format=None):
         """
         This method takes care of the put action for the part resource.
         """
         part = self.get_object(id)
-        serializer = artSerializer(part, data=request.data)
+        serializer = PartSerializer(part, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_200_OK)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def delete(self, request, version, id, format=None):
+    def delete(self, request, id, format=None):
         """
         This method takes care of the delete action for the part resource.
         """

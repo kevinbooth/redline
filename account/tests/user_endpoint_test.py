@@ -39,7 +39,7 @@ class UserEndpointTest(BaseViewTest):
         }
         # hit the API endpoint
         response = self.client.post(
-            reverse("register", kwargs={'version': 'v1'}),
+            reverse("register"),
             post_data,
             format='json'
         )

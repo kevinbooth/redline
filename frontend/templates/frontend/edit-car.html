@@ -40,7 +40,11 @@
         <label for="color">Color*</label>
         <input class="form__input" type="text" value="{{car.color}}" placeholder="Enter the car's color" name="color">
 
-        <button class="button" type="submit">Save Car</button>
+        <button class="button" type="submit">Save</button>
+      </form>
+      <form method="post" action="/edit-car/{{car.id}}/">
+        {% csrf_token %}
+        <input name="delete" type="submit" value="Delete">
       </form>
     </div>
   </div>

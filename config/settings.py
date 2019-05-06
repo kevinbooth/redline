@@ -47,7 +47,7 @@ INSTALLED_APPS = [
 LOGIN_URL = '/login/'
 
 LOGIN_EXEMPT_URLS = (
- r'^api/v1/*',
+ r'^api/*',
  r'^register/?',
 )
 

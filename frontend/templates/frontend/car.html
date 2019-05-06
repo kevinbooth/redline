@@ -17,7 +17,7 @@
           <div class="car-sidebar__info">{{car.vin}}</div>
           <label class="car-sidebar__label">Open Tasks:</label>
           <div class="car-sidebar__info car-sidebar__info--task">{{car.open_task_count}}</div>
-          <a href="/edit-car/{{car.id}}/">Edit Car</a>
+          <a class="car-sidebar__link" href="/edit-car/{{car.id}}/">Edit Car</a>
         </div>
       </div>
     </div>
@@ -43,8 +43,7 @@
               <td>{{task.notes}}</td>
               <td>{{task.due_date}}</td>
               <td class="table__controls">
-                <a href="/car/{{car.id}}/edit-task/{{task.id}}/">Edit</a> /
-                <a>Delete</a>
+                <a href="/car/{{car.id}}/edit-task/{{task.id}}/">Edit</a>
               </td>
             </tr>
             {% endif %}
@@ -70,8 +69,7 @@
               <td>{{task.notes}}</td>
               <td>{{task.completion_date}}</td>
               <td class="table__controls">
-                <a href="/car/{{car.id}}/edit-task/{{task.id}}/">Edit</a> /
-                <a>Delete</a>
+                <a href="/car/{{car.id}}/edit-task/{{task.id}}/">Edit</a>
               </td>
             </tr>
             {% endif %}
@@ -117,7 +115,9 @@
               <td>{{part.name}}</td>
               <td>{{part.price}}</td>
               <td>{{part.quantity}}</td>
-              <td class="table__controls"><a>Edit</a> / <a>Delete</a></td>
+              <td class="table__controls">
+                <a>Edit</a>
+              </td>
             </tr>
             {% endif %}
           {% endfor %}
@@ -137,6 +137,7 @@
 <div id="modal__overlay" class="modal__overlay closed"></div>
 
 <script>
+// Simple modal open and closer
 var tasks = document.getElementsByClassName('task');
 var closeButtons = document.getElementsByClassName('modal__close');
 var modalOverlay = document.querySelector("#modal__overlay");

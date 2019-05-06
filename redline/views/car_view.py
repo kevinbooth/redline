@@ -14,7 +14,7 @@ class CarView(APIView):
     GET - Retrieves a list of all Cars
     POST - Creates a new car
     """
-    def get(self, request, version, format=None):
+    def get(self, request, format=None):
         """
         This method takes care of the get action for the car resource.
         """
@@ -22,7 +22,7 @@ class CarView(APIView):
         serializer = CarSerializer(cars, many=True)
         return Response(serializer.data)
 
-    def post(self, request, version, format=None):
+    def post(self, request, format=None):
         """
         This method takes care of the post action for the car resource.
         """

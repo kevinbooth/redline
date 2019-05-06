@@ -1,5 +1,8 @@
 """
 Module to define urlpatterns
+frontend/urls.py
+Author: Kevin Booth
+Last Updated: 5/1/2019
 """
 from django.urls import path
 from django.contrib.auth import views as auth_views
