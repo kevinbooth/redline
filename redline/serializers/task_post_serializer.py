@@ -7,6 +7,9 @@ from redline.models import Task
 
 class TaskPostSerializer(serializers.ModelSerializer):
     class Meta:
+        """
+        Maps TaskPostSerializer's files to the Task model field.
+        """
         model = Task
         fields = (
                   "car_id",

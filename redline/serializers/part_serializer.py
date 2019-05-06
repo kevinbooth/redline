@@ -7,6 +7,9 @@ from redline.models import Part
 
 class PartSerializer(serializers.ModelSerializer):
     class Meta:
+        """
+        Maps PartSerializer's files to the Part model field.
+        """
         model = Part
         fields = (
                   "task_id",
