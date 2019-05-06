@@ -1,3 +1,6 @@
+"""
+Module to take care of the GET, PUT, and POST actions for the Task resource.
+"""
 from redline.models import Task
 from redline.serializers import TaskSerializer, TaskPostSerializer
 from rest_framework.views import APIView
@@ -14,17 +17,26 @@ class TaskObjectView(APIView):
     """
 
     def get_object(self, id):
+        """
+        This method takes care of the get_object action for the task resource.
+        """
         try:
             return Task.objects.get(id=id)
         except Task.DoesNotExist:
             return None
 
     def get(self, request, version, id, format=None):
+        """
+        This method takes care of the get action for the task resource.
+        """
         task = self.get_object(id)
         serializer = TaskSerializer(task)
         return Response(serializer.data)
 
     def put(self, request, version, id, format=None):
+        """
+        This method takes care of the put action for the task resource.
+        """
         task = self.get_object(id)
         serializer = TaskSerializer(task, data=request.data)
         if serializer.is_valid():
@@ -33,6 +45,9 @@ class TaskObjectView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, version, id, format=None):
+        """
+        This method takes care of the delete action for the task resource.
+        """
         task = self.get_object(id)
         if task:
             task.delete()

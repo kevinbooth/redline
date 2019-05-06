@@ -1,3 +1,6 @@
+"""
+Module to take care of the GET and POST actions for the Car resource.
+"""
 from redline.models import Car
 from redline.serializers import CarSerializer, CarPostSerializer
 from rest_framework.views import APIView
@@ -12,11 +15,17 @@ class CarView(APIView):
     POST - Creates a new car
     """
     def get(self, request, version, format=None):
+        """
+        This method takes care of the get action for the car resource.
+        """
         cars = Car.objects.filter(user_id=self.request.user.id)
         serializer = CarSerializer(cars, many=True)
         return Response(serializer.data)
 
     def post(self, request, version, format=None):
+        """
+        This method takes care of the post action for the car resource.
+        """
         serializer = CarPostSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()

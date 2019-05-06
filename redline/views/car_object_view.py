@@ -1,3 +1,6 @@
+"""
+Module to take care of the GET, PUT, and DELETE actions for the Car resource.
+"""
 from redline.models import Car, Task
 from redline.serializers import CarSerializer, CarPostSerializer
 from rest_framework.views import APIView
@@ -13,12 +16,18 @@ class CarObjectView(APIView):
     Delete - Removes a car from the list
     """
     def get_object(self, id):
+        """
+        This method takes care of the get_object action for the Car resource.
+        """
         try:
             return Car.objects.get(id=id)
         except Car.DoesNotExist:
             return None
 
     def get(self, request, version, id, format=None):
+        """
+        This method takes care of the get action for the Car resource.
+        """
         car = self.get_object(id)
         open_task_count = Task.objects.filter(
                                               car_id=id,
@@ -30,6 +39,9 @@ class CarObjectView(APIView):
         return Response(data)
 
     def put(self, request, version, id, format=None):
+        """
+        This method takes care of the put action for the Car resource.
+        """
         car = self.get_object(id)
         serializer = CarSerializer(car, data=request.data)
         if serializer.is_valid():
@@ -38,6 +50,9 @@ class CarObjectView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, version, id, format=None):
+        """
+        This method takes care of the delete action for the Car resource.
+        """
         car = self.get_object(id)
         if car:
             car.delete()

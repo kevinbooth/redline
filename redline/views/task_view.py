@@ -1,3 +1,6 @@
+"""
+Module to take care of the GET and POST actions for the Task resource.
+"""
 from redline.models import Task
 from redline.serializers import TaskSerializer, TaskPostSerializer
 from rest_framework.views import APIView
@@ -12,11 +15,17 @@ class TaskView(APIView):
     POST - Creates a new Task
     """
     def get(self, request, id, version, format=None):
+        """
+        Get retrieves a list of all the Tasks for a specified Car.
+        """
         tasks = Task.objects.filter(car_id=id)
         serializer = TaskSerializer(tasks, many=True)
         return Response(serializer.data)
 
     def post(self, request, id, version, format=None):
+        """
+        Post creates a new Task.
+        """
         serializer = TaskPostSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
