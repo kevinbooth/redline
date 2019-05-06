@@ -1,3 +1,6 @@
+"""
+Module to define redline app
+"""
 from django.apps import AppConfig
 
 
