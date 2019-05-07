@@ -1,5 +1,8 @@
 """
 Module for the Car model definition
+redline/models/car_model.py
+Author: Ethan Jarzombek
+Last Updated: 5/7/2019
 """
 from django.db import models
 from django.contrib.auth.models import User

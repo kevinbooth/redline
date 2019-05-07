@@ -1,5 +1,8 @@
 """
 Module for the Task model definition
+redline/models/car_model.py
+Author: Anthony Toscano
+Last Updated: 5/7/2019
 """
 from django.db import models
 from . import Car

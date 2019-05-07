@@ -1,5 +1,8 @@
 """
-Module to take care of the GET, PUT, and DELETE actions for the Part resource.
+Module to take care of the GET, PUT, and Delete actions for the Part resource.
+redline/views/part_object_view.py
+Author: Ethan Jarzombek
+Last Updated: 5/7/2019
 """
 from redline.models import Part
 from redline.serializers import PartSerializer, PartPostSerializer

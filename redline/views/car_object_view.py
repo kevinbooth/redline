@@ -1,5 +1,8 @@
 """
-Module to take care of the GET, PUT, and DELETE actions for the Car resource.
+Module to take care of the GET, PUT, and Delete actions for the Car resource.
+redline/views/car_object_view.py
+Author: Ethan Jarzombek
+Last Updated: 5/7/2019
 """
 from redline.models import Car, Task
 from redline.serializers import CarSerializer, CarPostSerializer

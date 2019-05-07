@@ -1,5 +1,8 @@
 """
 Module to test task endpoints in the redline app
+redline/tests/task_endpoint_tests.py
+Author: Anthony Toscano
+Last Updated: 5/7/2019
 """
 from rest_framework.test import APITestCase, APIClient
 from rest_framework.authtoken.models import Token

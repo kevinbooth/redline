@@ -1,5 +1,8 @@
 """
 Module to take care of the GET, PUT, and POST actions for the Task resource.
+redline/views/task_object_view.py
+Author: Anthony Toscano
+Last Updated: 5/7/2019
 """
 from redline.models import Task
 from redline.serializers import TaskSerializer, TaskPostSerializer

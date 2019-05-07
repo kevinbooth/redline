@@ -1,5 +1,8 @@
 """
 Module for the Part model definition
+redline/models/part_model.py
+Author: Ethan Jarzombek
+Last Updated: 5/7/2019
 """
 from django.db import models
 from . import Task

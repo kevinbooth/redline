@@ -1,5 +1,8 @@
 """
 Used to convert data to Python data types then rendered to JSON
+redline/serializers/task_post_serializer.py
+Author: Anthony Toscano
+Last Updated: 5/7/2019
 """
 from rest_framework import serializers
 from redline.models import Task

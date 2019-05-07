@@ -1,5 +1,8 @@
 """
 Module to take care of the GET and POST actions for the Task resource.
+redline/views/part_view.py
+Author: Ethan Jarzombek
+Last Updated: 5/7/2019
 """
 from redline.models import Part
 from redline.serializers import PartSerializer, PartPostSerializer

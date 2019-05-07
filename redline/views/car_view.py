@@ -1,5 +1,8 @@
 """
 Module to take care of the GET and POST actions for the Car resource.
+redline/views/car_view.py
+Author: Ethan Jarzombek
+Last Updated: 5/7/2019
 """
 from redline.models import Car
 from redline.serializers import CarSerializer, CarPostSerializer
