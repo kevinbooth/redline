@@ -75,8 +75,8 @@ class APIHelper():
         @return json api response
         """
         response = requests.delete(API_ROOT_URL + url,
-                                headers={'Authorization': 'Token ' +
-                                         str(auth)},
-                                json=data)
+                                   headers={'Authorization': 'Token ' +
+                                            str(auth)},
+                                   json=data)
         data = response.json()
         return data

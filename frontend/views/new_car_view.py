@@ -37,8 +37,8 @@ class NewCarView(TemplateView):
         if form.is_valid():
             form.cleaned_data['user_id'] = request.user.id
             response = APIHelper.post_to_api('cars/',
-                                  self.request.user.auth_token,
-                                  form.cleaned_data)
+                                             self.request.user.auth_token,
+                                             form.cleaned_data)
             print(response)
             context['message'] = 'Thank you! Your car has been saved.'
             return render(request, self.template_name, context)

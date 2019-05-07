@@ -37,7 +37,7 @@ class BaseViewTest(APITestCase):
             user_post_data,
             format='json'
         )
-        
+
         self.user_id = User.objects.get(username='jsmith').id
         token = Token.objects.get(user__username='jsmith')
         self.client.credentials(HTTP_AUTHORIZATION='Token ' + token.key)
