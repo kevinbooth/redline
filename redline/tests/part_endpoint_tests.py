@@ -1,3 +1,9 @@
+"""
+Module to test task endpoints in the redline app
+redline/tests/part_endpoint_tests.py
+Author: Ethan Jarzombek
+Last Updated: 5/7/2019
+"""
 # from rest_framework.test import APITestCase, APIClient
 # from rest_framework.views import status
 # from django.urls import reverse
