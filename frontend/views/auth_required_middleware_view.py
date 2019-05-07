@@ -1,3 +1,10 @@
+"""
+Module to define middleware to restrict views if not logged in
+frontend/views/auth_required_middleware_view.py
+Author: Kevin Booth
+Last Updated: 5/1/2019
+"""
+
 from django.http import HttpResponseRedirect
 from django.conf import settings
 from re import compile

@@ -1,3 +1,14 @@
+```
+                              _.-="_-         _
+                         _.-="   _-          | ||"""""""---._______     __..
+             ___.===""""-.______-,,,,,,,,,,,,`-''----" """""       """""  __'
+      __.--""     __        ,'                   o \           __        [__|
+ __-""=======.--""  ""--.=================================.--""  ""--.=======:
+]       [w] : /        \ : |========================|    : /        \ :  [w] :
+V___________:|    ()    |: |========REDLINE=========|    :|    ()    |:   _-"
+ V__________: \        / :_|=======================/_____: \        / :__-"
+ -----------'  "-____-"  `-------------------------------'  "-____-"                                      
+```
 # Redline
 #### Car Modification Tracking Application
 
@@ -79,8 +90,8 @@ python manage.py runserver
 * New Task - Page to add a new task to a car
 * New Part - Page to add a new part to a task
 * Edit Task - Page to edit an existing task
-* Edit Car - (Coming soon)
-* Edit Part - (Coming soon)
+* Edit Car - Page to edit an existing Car
+* Edit Part - Page to edit an existing part
 
 #### Instructions
 * To see the frontend, start server
@@ -96,12 +107,30 @@ python manage.py runserver
 ### Car Endpoint
 * This endpoint holds all of the information for the cars owned by a user.
 * Required data for the user to enter: ("vin", "year", "make", "model", "color")
+* You are able to create a new car, update an existing car's information, get the information for your cars, and delete your cars.
+* Endpoint URLs:
+* api/ cars/ [name='cars']
+* api/ car/<id> [name='car']
+
 ### Part Endpoint
 * This endpoint holds all the information about the parts needed for tasks.
 * Required data for the user to enter: ("name", "price", "quantity")
+* You are able to create a new part, update an existing part's information, get the information for the parts, and delete the parts.
+* Endpoint URLs:
+* api/ parts/ [name='parts']
+* api/ part/<id> [name='part']
+
 ### Task Endpoint
 * This endpoint holds all of the information for each task needed to be performed on the cars.
 * Required data for the user to enter: ( "name", "estimated_hours", "due_date", "completion_date", "notes")
+* You are able to create a new task, update an existing task's information, get the information for your tasks, and delete your tasks.
+* Endpoint URLs:
+* api/ car/<id>/tasks/ [name='tasks']
+* api/ task/<id> [name='task']
+
 ### User Endpoint
 * This endpoint holds all of the information for the user who can own cars.
 * Required data for the user to enter: ("username", "email", "password", "first_name", "last_name")
+* You are able to create a new user and login as that user. each user is able to see all of the cars, tasks, and parts they have. As the user, you are able to create, read, update, and delete as needed.
+* Endpoint URLs:
+* api/ user/

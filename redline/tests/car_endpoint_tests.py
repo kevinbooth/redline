@@ -1,5 +1,8 @@
 """
 Module to test car endpoints in the redline app
+redline/tests/car_endpoint_tests.py
+Author: Anthony Toscano
+Last Updated: 5/7/2019
 """
 from rest_framework.test import APITestCase, APIClient
 from rest_framework.authtoken.models import Token
@@ -10,11 +13,17 @@ from redline.models import Car
 
 
 class BaseViewTest(APITestCase):
+    """
+    Class used to test the car endpoints in the redline app.
+    """
     client = APIClient()
     car_post_data = {}
     user_id = 0
 
     def setUp(self):
+        """
+        Used to create a user with a car and a task for testing purposes.
+        """
         User.objects.create_user(username="jsmith",
                                  email="jsmith@unh.edu",
                                  password="abc123",
@@ -25,7 +34,7 @@ class BaseViewTest(APITestCase):
             'password': 'abc123'
         }
         response = self.client.post(
-            reverse("auth", kwargs={'version': 'v1'}),
+            reverse("auth"),
             user_post_data,
             format='json'
         )
@@ -43,7 +52,7 @@ class BaseViewTest(APITestCase):
         self.client.credentials(HTTP_AUTHORIZATION='Token ' + token.key)
 
         response = self.client.post(
-            reverse("cars", kwargs={'version': 'v1'}),
+            reverse("cars"),
             self.car_post_data,
             format='json'
         )
@@ -57,7 +66,7 @@ class CarEndpointTest(BaseViewTest):
         """
 
         response = self.client.get(
-            reverse("cars", kwargs={'version': 'v1'}),
+            reverse("cars"),
             format='json'
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -69,7 +78,7 @@ class CarEndpointTest(BaseViewTest):
         """
 
         response = self.client.post(
-            reverse("cars", kwargs={'version': 'v1'}),
+            reverse("cars"),
             self.car_post_data,
             format='json'
         )
@@ -82,7 +91,7 @@ class CarEndpointTest(BaseViewTest):
         car_id = Car.objects.get(vin='abc1234567890').id
 
         response = self.client.delete(
-            reverse("car", kwargs={'version': 'v1', 'id': car_id}),
+            reverse("car", kwargs={'id': car_id}),
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
@@ -94,7 +103,7 @@ class CarEndpointTest(BaseViewTest):
         car_id = Car.objects.get(vin='abc1234567890').id
 
         response = self.client.put(
-            reverse("car", kwargs={'version': 'v1', 'id': car_id}),
+            reverse("car", kwargs={'id': car_id}),
             self.car_post_data,
             format='json'
         )

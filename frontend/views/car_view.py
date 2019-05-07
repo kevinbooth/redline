@@ -1,3 +1,9 @@
+"""
+Module that renders the car detail page
+frontend/views/car_view.py
+Author: Kevin Booth
+Last Updated: 5/1/2019
+"""
 from frontend.constants import APP_TEMPLATE_DIR, API_ROOT_URL
 from frontend.views.api_helper import APIHelper
 from django.views.generic.base import TemplateView
@@ -6,7 +12,11 @@ from frontend.forms import CompleteTaskForm
 
 
 class CarView(TemplateView):
-
+    """
+    Class that handles the car detail frontend view
+    GET - Returns default template
+    POST - Sends complete date for a task
+    """
     template_name = APP_TEMPLATE_DIR + "car.html"
 
     def get_context_data(self, id, **kwargs):

@@ -1,3 +1,9 @@
+"""
+Module that renders the register page
+frontend/views/register_view.py
+Author: Kevin Booth
+Last Updated: 5/1/2019
+"""
 from frontend.constants import APP_TEMPLATE_DIR, API_ROOT_URL
 from frontend.views.api_helper import APIHelper
 from django.views.generic.base import TemplateView
@@ -9,20 +15,20 @@ class RegisterView(TemplateView):
     """
     Class that handles the register frontend view
     GET - Returns default template
-    POST - Inputs user registration data to create an account
+    POST - Sends user registration data to create an account
     """
-
     template_name = APP_TEMPLATE_DIR + "register.html"
 
     def get(self, request):
         """
-        Method to returns register template
+        Handles the return of the register template
         """
         return render(request, self.template_name)
 
     def post(self, request):
         """
-        Method to input user registration data to create an account
+        Handles any incoming post requests pointing to this view specifically
+        for creating a new user
         """
         message = {}
         form = RegisterForm(self.request.POST)

@@ -221,6 +221,11 @@ tr:hover {
 .car-sidebar__label {
   margin-bottom: 0;
 }
+.car-sidebar__link {
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: none;
+}
 
 /* Table styles */
 .table {

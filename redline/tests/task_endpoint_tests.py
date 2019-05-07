@@ -1,5 +1,8 @@
 """
 Module to test task endpoints in the redline app
+redline/tests/task_endpoint_tests.py
+Author: Anthony Toscano
+Last Updated: 5/7/2019
 """
 from rest_framework.test import APITestCase, APIClient
 from rest_framework.authtoken.models import Token
@@ -10,6 +13,9 @@ from redline.models import Car, Task
 
 
 class BaseViewTest(APITestCase):
+    """
+    Class used to test the task endpoints in the redline app.
+    """
     client = APIClient()
     car_post_data = {}
     task_post_data = {}
@@ -17,6 +23,9 @@ class BaseViewTest(APITestCase):
     user_id = 0
 
     def setUp(self):
+        """
+        Used to create a user with a car and a task for testing purposes.
+        """
         User.objects.create_user(username="jsmith",
                                  email="jsmith@unh.edu",
                                  password="abc123",
@@ -27,7 +36,7 @@ class BaseViewTest(APITestCase):
             'password': 'abc123'
         }
         response = self.client.post(
-            reverse("auth", kwargs={'version': 'v1'}),
+            reverse("auth"),
             user_post_data,
             format='json'
         )
@@ -45,7 +54,7 @@ class BaseViewTest(APITestCase):
         }
 
         response = self.client.post(
-            reverse("cars", kwargs={'version': 'v1'}),
+            reverse("cars"),
             self.car_post_data,
             format='json'
         )
@@ -62,7 +71,7 @@ class BaseViewTest(APITestCase):
         }
 
         response = self.client.post(
-            reverse("cars", kwargs={'version': 'v1'}),
+            reverse("cars"),
             self.car_post_data,
             format='json'
         )
@@ -76,7 +85,7 @@ class TaskEndpointTest(BaseViewTest):
         """
 
         response = self.client.get(
-            reverse("tasks", kwargs={'version': 'v1', 'id': self.car_id}),
+            reverse("tasks", kwargs={'id': self.car_id}),
             format='json'
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -88,7 +97,7 @@ class TaskEndpointTest(BaseViewTest):
         """
 
         response = self.client.post(
-            reverse("tasks", kwargs={'version': 'v1', 'id': self.car_id}),
+            reverse("tasks", kwargs={'id': self.car_id}),
             self.task_post_data,
             format='json'
         )
@@ -99,7 +108,7 @@ class TaskEndpointTest(BaseViewTest):
         This test ensures that a task is deleted from a user.
         """
         self.client.post(
-            reverse("tasks", kwargs={'version': 'v1', 'id': self.car_id}),
+            reverse("tasks", kwargs={'id': self.car_id}),
             self.task_post_data,
             format='json'
         )
@@ -107,7 +116,7 @@ class TaskEndpointTest(BaseViewTest):
         task_id = Task.objects.get(car_id=self.car_id).id
 
         response = self.client.delete(
-            reverse("task", kwargs={'version': 'v1', 'id': task_id}),
+            reverse("task", kwargs={'id': task_id}),
         )
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
@@ -117,7 +126,7 @@ class TaskEndpointTest(BaseViewTest):
         when we make a POST request to the task/ endpoint
         """
         self.client.post(
-            reverse("tasks", kwargs={'version': 'v1', 'id': self.car_id}),
+            reverse("tasks", kwargs={'id': self.car_id}),
             self.task_post_data,
             format='json'
         )
@@ -125,7 +134,7 @@ class TaskEndpointTest(BaseViewTest):
         task_id = Task.objects.get(car_id=self.car_id).id
 
         response = self.client.put(
-            reverse("task", kwargs={'version': 'v1', 'id': task_id}),
+            reverse("task", kwargs={'id': task_id}),
             self.task_post_data,
             format='json'
         )

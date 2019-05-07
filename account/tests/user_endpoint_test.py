@@ -1,5 +1,8 @@
 """
 Module to test endpoints in the account app
+account/user_endpoint_test.py
+Author: Kevin Booth
+Last Updated: 5/7/2019
 """
 from rest_framework.test import APITestCase, APIClient
 from rest_framework.views import status
@@ -39,7 +42,7 @@ class UserEndpointTest(BaseViewTest):
         }
         # hit the API endpoint
         response = self.client.post(
-            reverse("register", kwargs={'version': 'v1'}),
+            reverse("register"),
             post_data,
             format='json'
         )

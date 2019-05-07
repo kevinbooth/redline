@@ -1,3 +1,9 @@
+"""
+Module to take care of the GET and POST actions for the Task resource.
+redline/views/part_view.py
+Author: Ethan Jarzombek
+Last Updated: 5/7/2019
+"""
 from redline.models import Part
 from redline.serializers import PartSerializer, PartPostSerializer
 from rest_framework.views import APIView
@@ -11,12 +17,18 @@ class PartView(APIView):
     GET - Retrieves a list of all Parts
     POST - Creates a new Part
     """
-    def get(self, request, version, format=None):
+    def get(self, request, format=None):
+        """
+        This method gets the information for each part resource.
+        """
         parts = Part.objects.all()
         serializer = PartSerializer(parts, many=True)
         return Response(serializer.data)
 
-    def post(self, request, version, format=None):
+    def post(self, request, format=None):
+        """
+        This method posts new information about the part resource.
+        """
         serializer = PartPostSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()

@@ -44,7 +44,6 @@ Last Updated: 5/7/2019
 #         }
 #         token = Token.objects.get(user__username='jsmith')
 #         self.client.credentials(HTTP_AUTHORIZATION='Token ' + token.key)
-
 #         response = self.client.post(
 #             reverse("cars", kwargs={'version': 'v1'}),
 #             self.car_post_data,
@@ -77,7 +76,6 @@ Last Updated: 5/7/2019
 #             self.part_post_data,
 #             format='json'
 #         )
-
 #         part_id = Part.objects.get(task_id=self.task_id).id
 
 #         response = self.client.put(

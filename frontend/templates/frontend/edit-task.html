@@ -45,6 +45,10 @@
 
         <button class="button" type="submit">Save</button>
       </form>
+      <form method="post" action="/car/{{car.id}}/edit-task/{{task.id}}/">
+        {% csrf_token %}
+        <input name="delete" type="submit" value="Delete">
+      </form>
     </div>
   </div>
 </div>
