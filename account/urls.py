@@ -1,5 +1,8 @@
 """
 Module to define urlpatterns
+account/urls.py
+Author: Kevin Booth
+Last Updated: 5/7/2019
 """
 from django.urls import path
 from rest_framework.authtoken import views

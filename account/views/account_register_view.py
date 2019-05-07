@@ -1,5 +1,8 @@
 """
 Module that handles all user specific endpoints
+account/account_register_view.py
+Author: Kevin Booth
+Last Updated: 5/7/2019
 """
 from rest_framework.views import APIView
 from rest_framework.response import Response
