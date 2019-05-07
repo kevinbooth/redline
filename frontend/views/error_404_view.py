@@ -1,4 +1,5 @@
 """
+Module that renders the 404 page
 frontend/views/error_404_view.py
 Author: Kevin Booth
 Last Updated: 5/1/2019

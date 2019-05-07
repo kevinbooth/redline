@@ -1,4 +1,5 @@
 """
+Module that renders the car detail page
 frontend/views/car_view.py
 Author: Kevin Booth
 Last Updated: 5/1/2019

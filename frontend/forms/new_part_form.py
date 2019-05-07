@@ -1,4 +1,5 @@
 """
+Form to create and edit a new part
 frontend/forms/new_part_form.py
 Author: Kevin Booth
 Last Updated: 5/1/2019

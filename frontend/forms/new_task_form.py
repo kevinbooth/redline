@@ -1,4 +1,5 @@
 """
+Form to create and edit a new task
 frontend/forms/new_task_form.py
 Author: Kevin Booth
 Last Updated: 5/1/2019

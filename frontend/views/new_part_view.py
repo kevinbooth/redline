@@ -1,4 +1,5 @@
 """
+Module that renders the new part page
 frontend/views/new_part_view.py
 Author: Kevin Booth
 Last Updated: 5/1/2019

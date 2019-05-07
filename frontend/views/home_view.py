@@ -1,4 +1,5 @@
 """
+Module that renders the dashboard page
 frontend/views/home_view.py
 Author: Kevin Booth
 Last Updated: 5/1/2019

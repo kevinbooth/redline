@@ -1,4 +1,5 @@
 """
+Module that renders the edit car page
 frontend/views/edit_car_view.py
 Author: Kevin Booth
 Last Updated: 5/1/2019

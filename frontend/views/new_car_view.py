@@ -1,4 +1,5 @@
 """
+Module that renders the new car page
 frontend/views/new_car_view.py
 Author: Kevin Booth
 Last Updated: 5/1/2019

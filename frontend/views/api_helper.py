@@ -1,4 +1,5 @@
 """
+Module to help frontend make requests to the API
 frontend/views/api_helper.py
 Author: Kevin Booth
 Last Updated: 5/1/2019

@@ -1,4 +1,5 @@
 """
+Form to complete a task
 frontend/forms/complete_task_form.py
 Author: Kevin Booth
 Last Updated: 5/1/2019

@@ -1,4 +1,5 @@
 """
+Module that renders the edit task page
 frontend/views/edit_task_view.py
 Author: Kevin Booth
 Last Updated: 5/1/2019

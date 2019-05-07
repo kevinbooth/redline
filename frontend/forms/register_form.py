@@ -1,4 +1,5 @@
 """
+Form to register an account
 frontend/forms/register_form.py
 Author: Kevin Booth
 Last Updated: 5/1/2019
